@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2016. VibeCampo Social Network
   ~
-  ~ Full Name : Anthony Ngure W.
-  ~
-  ~ Email : anthonyngure25@gmail.com
+  ~ Website : http://www.vibecampo.com
   -->
 
 <ImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/imageView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:adjustViewBounds="true"
-    android:scaleType="centerCrop"
-    android:background="@drawable/background_normal_fine_network_image"/>
+    android:background="@drawable/background_normal_fine_network_image"
+    android:scaleType="centerCrop" />

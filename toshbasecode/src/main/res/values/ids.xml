@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2017.
-  ~
-  ~ Full Name : Anthony Ngure W.
-  ~
-  ~ Email : anthonyngure25@gmail.com
-  -->
-
-<resources></resources>
+<resources>
+    <item name="sectioning_adapter_tag_key_view_viewholder" type="id" />
+</resources>
 

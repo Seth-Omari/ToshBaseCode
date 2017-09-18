@@ -1,9 +1,7 @@
 <!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2016. VibeCampo Social Network
   ~
-  ~ Full Name : Anthony Ngure W.
-  ~
-  ~ Email : anthonyngure25@gmail.com
+  ~ Website : http://www.vibecampo.com
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,6 +24,7 @@
         android:scaleType="centerCrop" />
 
     <LinearLayout
+        android:id="@+id/buttons"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"

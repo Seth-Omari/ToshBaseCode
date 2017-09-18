@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2016. VibeCampo Social Network
   ~
-  ~ Full Name : Anthony Ngure W.
-  ~
-  ~ Email : anthonyngure25@gmail.com
+  ~ Website : http://www.vibecampo.com
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="64dp"
     android:layout_gravity="center"
     android:background="?attr/selectableItemBackground"
+    android:minHeight="64dp"
     android:orientation="vertical"
+    android:paddingBottom="0dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
-    android:paddingTop="5dp"
-    android:paddingBottom="0dp">
+    android:paddingTop="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,10 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:tint="?attr/colorPrimary"
             android:src="@drawable/ic_keyboard_black_24dp"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin" />
+            android:tint="?attr/colorPrimary" />
 
         <RelativeLayout
             android:layout_width="match_parent"
