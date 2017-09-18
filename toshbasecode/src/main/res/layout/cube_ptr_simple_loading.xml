@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2017. Laysan Incorporation
+  ~ Website http://laysan.co.ke
+  ~ Tel +254723203475/+254706356815
+  -->
+
+<ProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@android:style/Widget.ProgressBar.Small"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center" />
+

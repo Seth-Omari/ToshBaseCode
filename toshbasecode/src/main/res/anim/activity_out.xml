@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2017. Laysan Incorporation
+  ~ Website http://laysan.co.ke
+  ~ Tel +254723203475/+254706356815
+  -->
+
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="400"
+        android:fromXDelta="0"
+        android:toYDelta="100%" />
+    <alpha
+        android:duration="800"
+        android:fromAlpha="1.0"
+        android:toAlpha="0.0" />
+</set>
