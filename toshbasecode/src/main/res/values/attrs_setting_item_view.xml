@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017.
+  ~
+  ~ Full Name : Anthony Ngure W.
+  ~
+  ~ Email : anthonyngure25@gmail.com
+  -->
+
+<resources>
+    <declare-styleable name="BaseSettingItemView">
+        <attr name="itemValue" format="string" />
+        <attr name="itemSummary" format="string" />
+        <attr name="itemDrawable" format="reference" />
+        <attr name="itemValueTextAppearance" format="reference" />
+        <attr name="itemSummaryTextAppearance" format="reference" />
+        <attr name="itemHideDivider" format="boolean" />
+        <attr name="itemDisplayMode">
+            <enum name="defaultMode" value="0" />
+            <enum name="switchMode" value="1" />
+        </attr>
+    </declare-styleable>
+
+</resources>
