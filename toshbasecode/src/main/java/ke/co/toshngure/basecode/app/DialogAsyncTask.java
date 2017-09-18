@@ -16,7 +16,7 @@ import ke.co.toshngure.basecode.R;
 /**
  * Created by Anthony Ngure on 03/09/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 public abstract class DialogAsyncTask<Params, Progress, Result>
         extends AsyncTask<Params, Progress, Result> {

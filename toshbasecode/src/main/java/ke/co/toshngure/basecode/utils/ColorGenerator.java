@@ -15,7 +15,7 @@ import java.util.Random;
 /**
  * Created by Anthony Ngure on 7/15/2016.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 public class ColorGenerator {
 

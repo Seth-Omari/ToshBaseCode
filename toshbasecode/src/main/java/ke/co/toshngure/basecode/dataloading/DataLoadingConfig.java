@@ -11,7 +11,7 @@ package ke.co.toshngure.basecode.dataloading;
 /**
  * Created by Anthony Ngure on 15/09/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public class DataLoadingConfig {

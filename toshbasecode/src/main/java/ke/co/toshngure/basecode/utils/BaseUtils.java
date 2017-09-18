@@ -39,7 +39,7 @@ import ke.co.toshngure.basecode.annotations.GsonAvoid;
 /**
  * Created by Anthony Ngure on 17/02/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public class BaseUtils {

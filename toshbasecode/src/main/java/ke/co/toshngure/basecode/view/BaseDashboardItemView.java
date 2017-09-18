@@ -27,7 +27,7 @@ import ke.co.toshngure.basecode.R;
 /**
  * Created by Anthony Ngure on 7/25/2016.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 public class BaseDashboardItemView extends FrameLayout {
 

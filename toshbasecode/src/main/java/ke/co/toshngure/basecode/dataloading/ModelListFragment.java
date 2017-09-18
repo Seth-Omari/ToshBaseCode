@@ -51,7 +51,7 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
 /**
  * Created by Anthony Ngure on 04/06/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends Fragment implements

@@ -18,7 +18,7 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 /**
  * Created by Anthony Ngure on 26/02/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public class FilterBitmapTransformation extends BitmapTransformation {
@@ -249,7 +249,7 @@ public class FilterBitmapTransformation extends BitmapTransformation {
     /**
      * Created by Anthony Ngure on 26/02/2017.
      * Email : anthonyngure25@gmail.com.
-     * Company : VibeCampo Social Network..
+     *
      */
 
     public enum FilterCategory {

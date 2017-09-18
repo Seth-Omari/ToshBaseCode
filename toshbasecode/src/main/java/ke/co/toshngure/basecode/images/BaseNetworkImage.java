@@ -36,7 +36,7 @@ import ke.co.toshngure.basecode.view.CircleImageView;
 /**
  * Created by Anthony Ngure on 20/02/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public class BaseNetworkImage extends FrameLayout {

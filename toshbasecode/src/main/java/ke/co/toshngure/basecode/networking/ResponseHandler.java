@@ -20,7 +20,7 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
 /**
  * Created by Anthony Ngure on 27/07/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public class ResponseHandler extends JsonHttpResponseHandler {

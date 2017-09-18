@@ -14,7 +14,7 @@ import org.json.JSONObject;
 /**
  * Created by Anthony Ngure on 21/01/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public class JSONArrayResponse {

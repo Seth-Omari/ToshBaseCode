@@ -24,7 +24,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 /**
  * Created by Anthony Ngure on 7/15/2016.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 public class TextDrawable extends ShapeDrawable {
 

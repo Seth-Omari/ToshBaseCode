@@ -15,7 +15,7 @@ import org.json.JSONObject;
 /**
  * Created by Anthony Ngure on 6/10/2016.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 public interface ConnectionListener {
 

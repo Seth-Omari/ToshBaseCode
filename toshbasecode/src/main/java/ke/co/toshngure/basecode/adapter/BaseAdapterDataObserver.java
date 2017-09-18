@@ -13,7 +13,7 @@ import android.support.v7.widget.RecyclerView;
 /**
  * Created by Anthony Ngure on 27/02/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public abstract class BaseAdapterDataObserver extends RecyclerView.AdapterDataObserver {

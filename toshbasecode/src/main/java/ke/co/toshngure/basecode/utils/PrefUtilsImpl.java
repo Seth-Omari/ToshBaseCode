@@ -15,7 +15,7 @@ import android.support.annotation.StringRes;
 /**
  * Created by Anthony Ngure on 16/02/2017.
  * Email : anthonyngure25@gmail.com.
- * Company : VibeCampo Social Network..
+ *
  */
 
 public abstract class PrefUtilsImpl {
