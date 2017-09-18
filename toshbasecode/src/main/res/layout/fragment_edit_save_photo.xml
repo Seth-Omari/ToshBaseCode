@@ -1,22 +1,22 @@
 <!--
-  ~ Copyright (c) 2016. VibeCampo Social Network
+  ~ Copyright (c) 2017.
   ~
-  ~ Website : http://www.vibecampo.com
+  ~ Anthony Ngure
+  ~
+  ~ Email : anthonyngure25@gmail.com
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
-    tools:context="com.vibecampo.android.image.camera.EditSavePhotoFragment">
+    android:background="@android:color/black">
 
     <View
         android:id="@+id/topView"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
 
-    <ke.co.laysan.baseapp.view.SquaredImageView
+    <ke.co.toshngure.basecode.view.SquaredImageView
         android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

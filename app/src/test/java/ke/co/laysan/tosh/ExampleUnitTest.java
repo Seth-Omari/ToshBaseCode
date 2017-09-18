@@ -1,8 +1,16 @@
+/*
+ * Copyright (c) 2017.
+ *
+ * Anthony Ngure
+ *
+ * Email : anthonyngure25@gmail.com
+ */
+
 package ke.co.laysan.tosh;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

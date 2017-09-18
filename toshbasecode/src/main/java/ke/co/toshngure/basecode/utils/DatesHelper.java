@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -30,8 +30,8 @@ import ke.co.toshngure.basecode.log.BeeLog;
 
 public class DatesHelper {
 
-    private static final String TAG = DatesHelper.class.getSimpleName();
     public static final String US_DATE_PATTERN = "MM/dd/yyyy";
+    private static final String TAG = DatesHelper.class.getSimpleName();
 
     public static CharSequence formatJustTime(Context context, long timestamp) {
 

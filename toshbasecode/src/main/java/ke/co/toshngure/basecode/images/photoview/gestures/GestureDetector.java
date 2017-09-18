@@ -2,7 +2,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */

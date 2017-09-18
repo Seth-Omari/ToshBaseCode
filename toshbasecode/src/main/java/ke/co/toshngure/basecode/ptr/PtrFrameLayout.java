@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -32,21 +32,21 @@ public class PtrFrameLayout extends ViewGroup {
 
     // status enum
     public final static byte PTR_STATUS_INIT = 1;
-    private byte mStatus = PTR_STATUS_INIT;
     public final static byte PTR_STATUS_PREPARE = 2;
     public final static byte PTR_STATUS_LOADING = 3;
     public final static byte PTR_STATUS_COMPLETE = 4;
     private static final boolean DEBUG_LAYOUT = true;
-    public static boolean DEBUG = false;
-    private static int ID = 1;
-    protected final String LOG_TAG = "ptr-frame-" + ++ID;
     // auto refresh status
     private final static byte FLAG_AUTO_REFRESH_AT_ONCE = 0x01;
     private final static byte FLAG_AUTO_REFRESH_BUT_LATER = 0x01 << 1;
     private final static byte FLAG_ENABLE_NEXT_PTR_AT_ONCE = 0x01 << 2;
     private final static byte FLAG_PIN_CONTENT = 0x01 << 3;
     private final static byte MASK_AUTO_REFRESH = 0x03;
+    public static boolean DEBUG = false;
+    private static int ID = 1;
+    protected final String LOG_TAG = "ptr-frame-" + ++ID;
     protected View mContent;
+    private byte mStatus = PTR_STATUS_INIT;
     // optional config for define header and content in xml file
     private int mHeaderId = 0;
     private int mContainerId = 0;

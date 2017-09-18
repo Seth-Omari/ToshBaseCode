@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -163,11 +163,6 @@ public class BaseCollageView extends LinearLayout {
         this.onPhotoClickListener = onPhotoClickListener;
     }
 
-    public interface OnPhotoClickListener {
-        void onPhotoClick(int position);
-    }
-
-
     public enum ImageForm {
         IMAGE_FORM_SQUARE(1), IMAGE_FORM_HALF_HEIGHT(2);
 
@@ -180,5 +175,10 @@ public class BaseCollageView extends LinearLayout {
         public int getDivider() {
             return divider;
         }
+    }
+
+
+    public interface OnPhotoClickListener {
+        void onPhotoClick(int position);
     }
 }

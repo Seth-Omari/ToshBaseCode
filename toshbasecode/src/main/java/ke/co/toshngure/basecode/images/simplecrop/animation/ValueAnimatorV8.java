@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -19,12 +19,11 @@ public class ValueAnimatorV8 implements SimpleValueAnimator {
     private static final int FRAME_RATE = 30;
     private static final int UPDATE_SPAN = Math.round((float) 1000 / (float) FRAME_RATE);
     private static final int DEFAULT_ANIMATION_DURATION = 150;
-
-    private Interpolator mInterpolator;
     ScheduledExecutorService service;
     long start;
     boolean isAnimationStarted = false;
     long duration;
+    private Interpolator mInterpolator;
     private SimpleValueAnimatorListener animatorListener = new SimpleValueAnimatorListener() {
         @Override
         public void onAnimationStarted() {

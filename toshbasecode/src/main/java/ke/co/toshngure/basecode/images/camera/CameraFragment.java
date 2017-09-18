@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -43,11 +43,10 @@ import ke.co.toshngure.basecode.R;
 
 public class CameraFragment extends Fragment implements SurfaceHolder.Callback, Camera.PictureCallback {
 
-    private static final String TAG = CameraFragment.class.getSimpleName();
     public static final String CAMERA_ID_KEY = "camera_id";
     public static final String CAMERA_FLASH_KEY = "flash_mode";
     public static final String IMAGE_INFO = "image_info";
-
+    private static final String TAG = CameraFragment.class.getSimpleName();
     private static final int PICTURE_SIZE_MAX_WIDTH = 1280;
     private static final int PREVIEW_SIZE_MAX_WIDTH = 640;
 
@@ -104,7 +103,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         super.onViewCreated(view, savedInstanceState);
         mOrientationListener.enable();
 
-        mPreviewView = (SquareCameraPreview) view.findViewById(R.id.camera_preview_view);
+        mPreviewView = view.findViewById(R.id.camera_preview_view);
         mPreviewView.getHolder().addCallback(CameraFragment.this);
 
         final View topCoverView = view.findViewById(R.id.cover_top_view);
@@ -145,7 +144,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
             }
         }
 
-        final ImageView swapCameraBtn = (ImageView) view.findViewById(R.id.change_camera);
+        final ImageView swapCameraBtn = view.findViewById(R.id.change_camera);
         swapCameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,7 +175,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         });
         setupFlashMode();
 
-        final ImageView takePhotoBtn = (ImageView) view.findViewById(R.id.capture_image_button);
+        final ImageView takePhotoBtn = view.findViewById(R.id.capture_image_button);
         takePhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,7 +188,7 @@ public class CameraFragment extends Fragment implements SurfaceHolder.Callback, 
         View view = getView();
         if (view == null) return;
 
-        final TextView autoFlashIcon = (TextView) view.findViewById(R.id.auto_flash_icon);
+        final TextView autoFlashIcon = view.findViewById(R.id.auto_flash_icon);
         if (Camera.Parameters.FLASH_MODE_AUTO.equalsIgnoreCase(mFlashMode)) {
             autoFlashIcon.setText("Auto");
         } else if (Camera.Parameters.FLASH_MODE_ON.equalsIgnoreCase(mFlashMode)) {

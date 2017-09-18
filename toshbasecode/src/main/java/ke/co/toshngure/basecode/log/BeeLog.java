@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -17,8 +17,8 @@ import android.util.Log;
  */
 public final class BeeLog {
 
-    private static String TAG = "ToshNgure";
     public static boolean DEBUG = true;
+    private static String TAG = "ToshNgure";
 
     private BeeLog() {
         // no instance

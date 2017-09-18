@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -71,14 +71,13 @@ public class CropImageView extends android.support.v7.widget.AppCompatImageView 
     private static final int TRANSLUCENT_BLACK = 0xBB000000;
 
     // Member variables ////////////////////////////////////////////////////////////////////////////
-
+    private final Interpolator DEFAULT_INTERPOLATOR = new DecelerateInterpolator();
     private int mViewWidth = 0;
     private int mViewHeight = 0;
     private float mScale = 1.0f;
     private float mAngle = 0.0f;
     private float mImgWidth = 0.0f;
     private float mImgHeight = 0.0f;
-
     private boolean mIsInitialized = false;
     private Matrix mMatrix = null;
     private Paint mPaintTranslucent;
@@ -92,7 +91,6 @@ public class CropImageView extends android.support.v7.widget.AppCompatImageView 
     private boolean mIsRotating = false;
     private boolean mIsAnimating = false;
     private SimpleValueAnimator mAnimator = null;
-    private final Interpolator DEFAULT_INTERPOLATOR = new DecelerateInterpolator();
     private Interpolator mInterpolator = DEFAULT_INTERPOLATOR;
     private LoadCallback mLoadCallback = null;
     private CropCallback mCropCallback = null;

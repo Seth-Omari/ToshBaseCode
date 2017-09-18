@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -15,10 +15,10 @@ package ke.co.toshngure.basecode.ptr;
  */
 public abstract class PtrUIHandlerHook implements Runnable {
 
-    private Runnable mResumeAction;
     private static final byte STATUS_PREPARE = 0;
     private static final byte STATUS_IN_HOOK = 1;
     private static final byte STATUS_RESUMED = 2;
+    private Runnable mResumeAction;
     private byte mStatus = STATUS_PREPARE;
 
     public void takeOver() {

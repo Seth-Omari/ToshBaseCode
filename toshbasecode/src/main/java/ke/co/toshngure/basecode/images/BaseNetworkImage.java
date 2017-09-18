@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -60,9 +60,9 @@ public class BaseNetworkImage extends FrameLayout {
         super(context, attrs, defStyleAttr);
 
         LayoutInflater.from(context).inflate(R.layout.layout_network_image, this, true);
-        mErrorButton = (ImageView) findViewById(R.id.errorButton);
-        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        ViewStub viewStub = (ViewStub) findViewById(R.id.imageVS);
+        mErrorButton = findViewById(R.id.errorButton);
+        mProgressBar = findViewById(R.id.progressBar);
+        ViewStub viewStub = findViewById(R.id.imageVS);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseNetworkImage);
         boolean circled = typedArray.getBoolean(R.styleable.BaseNetworkImage_circled, false);

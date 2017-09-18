@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -58,8 +58,8 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         LoaderManager.LoaderCallbacks<List<C>>,
         OnLoadMoreListener, PtrHandler {
 
-    private static final String SHARED_PREFS_NAME = "data_loading_prefs";
     protected static final String ARG_POSITION = "arg_position";
+    private static final String SHARED_PREFS_NAME = "data_loading_prefs";
     private static final String TAG = ModelListFragment.class.getSimpleName();
     private static final String META = "meta";
     private static final String DATA = "data";
@@ -68,6 +68,8 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
     private static final String BEFORE = "before";
     private static final String RECENT = "recent";
     private static final String PER_PAGE = "perPage";
+    private static SharedPreferences mSharedPreferences;
+    protected int mPosition = 0;
     private SimpleRecyclerView mSimpleRecyclerView;
     private PtrClassicFrameLayout mPtrClassicFrameLayout;
     private View mFreshLoadView;
@@ -75,9 +77,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
     private boolean hasMoreToBottom = true;
     private boolean hasMoreToTop = true;
     private boolean isLoadingMore = false;
-    private static SharedPreferences mSharedPreferences;
     private ModelCursor mTempModelCursors;
-    protected int mPosition = 0;
 
     public ModelListFragment() {
     }
@@ -415,6 +415,18 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         updateModelCursor(modelCursor);
     }
 
+    protected void onError(int statusCode, String responseString) {
+        showErrorAlertDialog(String.valueOf(responseString));
+    }
+
+    protected void onError(int statusCode, JSONArray errorResponse) {
+        showErrorAlertDialog(String.valueOf(errorResponse));
+    }
+
+    protected void onError(int statusCode, JSONObject errorResponse) {
+        showErrorAlertDialog(String.valueOf(errorResponse));
+    }
+
     private final class ResponseHandler extends JsonHttpResponseHandler {
         @Override
         public void onStart() {
@@ -483,19 +495,6 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
             onError(statusCode, errorResponse);
         }
 
-    }
-
-    protected void onError(int statusCode, String responseString) {
-        showErrorAlertDialog(String.valueOf(responseString));
-    }
-
-    protected void onError(int statusCode, JSONArray errorResponse) {
-        showErrorAlertDialog(String.valueOf(errorResponse));
-    }
-
-
-    protected void onError(int statusCode, JSONObject errorResponse) {
-        showErrorAlertDialog(String.valueOf(errorResponse));
     }
 
 }

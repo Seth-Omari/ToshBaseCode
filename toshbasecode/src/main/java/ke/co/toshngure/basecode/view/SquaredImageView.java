@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -10,7 +10,6 @@ package ke.co.toshngure.basecode.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 /**
  * Created by Anthony Ngure on 7/1/2016.

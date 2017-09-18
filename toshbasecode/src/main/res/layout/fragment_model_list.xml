@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017. Laysan Incorporation
-  ~ Website http://laysan.co.ke
-  ~ Tel +254723203475/+254706356815
+  ~ Copyright (c) 2017.
+  ~
+  ~ Anthony Ngure
+  ~
+  ~ Email : anthonyngure25@gmail.com
   -->
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ke.co.laysan.baseapp.ptr.PtrClassicFrameLayout
+    <ke.co.toshngure.basecode.ptr.PtrClassicFrameLayout
         android:id="@+id/ptrClassicFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +25,7 @@
 
         <include layout="@layout/layout_simple_recyclerview"/>
 
-    </ke.co.laysan.baseapp.ptr.PtrClassicFrameLayout>
+    </ke.co.toshngure.basecode.ptr.PtrClassicFrameLayout>
 
     <FrameLayout
         android:id="@+id/freshLoadView"

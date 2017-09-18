@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -177,12 +177,12 @@ public class PtrIndicator {
         return mCurrentPos > getOffsetToKeepHeaderWhileLoading();
     }
 
-    public void setOffsetToKeepHeaderWhileLoading(int offset) {
-        mOffsetToKeepHeaderWhileLoading = offset;
-    }
-
     public int getOffsetToKeepHeaderWhileLoading() {
         return mOffsetToKeepHeaderWhileLoading >= 0 ? mOffsetToKeepHeaderWhileLoading : mHeaderHeight;
+    }
+
+    public void setOffsetToKeepHeaderWhileLoading(int offset) {
+        mOffsetToKeepHeaderWhileLoading = offset;
     }
 
     public boolean isAlreadyHere(int to) {

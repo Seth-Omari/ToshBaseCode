@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -18,20 +18,8 @@ class PtrUIHandlerHolder implements PtrUIHandler {
     private PtrUIHandler mHandler;
     private PtrUIHandlerHolder mNext;
 
-    private boolean contains(PtrUIHandler handler) {
-        return mHandler != null && mHandler == handler;
-    }
-
     private PtrUIHandlerHolder() {
 
-    }
-
-    public boolean hasHandler() {
-        return mHandler != null;
-    }
-
-    private PtrUIHandler getHandler() {
-        return mHandler;
     }
 
     public static void addHandler(PtrUIHandlerHolder head, PtrUIHandler handler) {
@@ -105,6 +93,18 @@ class PtrUIHandlerHolder implements PtrUIHandler {
             head = new PtrUIHandlerHolder();
         }
         return head;
+    }
+
+    private boolean contains(PtrUIHandler handler) {
+        return mHandler != null && mHandler == handler;
+    }
+
+    public boolean hasHandler() {
+        return mHandler != null;
+    }
+
+    private PtrUIHandler getHandler() {
+        return mHandler;
     }
 
     @Override

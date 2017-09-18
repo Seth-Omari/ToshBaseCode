@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -43,9 +43,17 @@ public class DataLoadingConfig {
         return this;
     }
 
+    int getLoaderId() {
+        return loaderId;
+    }
+
     public DataLoadingConfig setLoaderId(int loaderId) {
         this.loaderId = loaderId;
         return this;
+    }
+
+    boolean isAutoRefreshEnabled() {
+        return autoRefreshEnabled;
     }
 
     public DataLoadingConfig setAutoRefreshEnabled(boolean autoRefreshEnabled) {
@@ -53,9 +61,8 @@ public class DataLoadingConfig {
         return this;
     }
 
-    public DataLoadingConfig setRefreshEnabled(boolean refreshEnabled) {
-        this.refreshEnabled = refreshEnabled;
-        return this;
+    public boolean isLoadingMoreEnabled() {
+        return loadingMoreEnabled;
     }
 
     public DataLoadingConfig setLoadingMoreEnabled(boolean loadingMoreEnabled) {
@@ -63,9 +70,8 @@ public class DataLoadingConfig {
         return this;
     }
 
-    public DataLoadingConfig setCacheEnabled(boolean cacheEnabled) {
-        this.cacheEnabled = cacheEnabled;
-        return this;
+    int getLoadMoreThreshold() {
+        return loadMoreThreshold;
     }
 
     public DataLoadingConfig setLoadMoreThreshold(int loadMoreThreshold) {
@@ -73,9 +79,17 @@ public class DataLoadingConfig {
         return this;
     }
 
+    String getUrl() {
+        return url;
+    }
+
     public DataLoadingConfig setUrl(String url) {
         this.url = url;
         return this;
+    }
+
+    public boolean isDebugEnabled() {
+        return debugEnabled;
     }
 
     public DataLoadingConfig setDebugEnabled(boolean debugEnabled) {
@@ -83,42 +97,22 @@ public class DataLoadingConfig {
         return this;
     }
 
-    public DataLoadingConfig setPerPage(int perPage) {
-        this.perPage = perPage;
-        return this;
-    }
-
-    int getLoaderId() {
-        return loaderId;
-    }
-
-
-    boolean isAutoRefreshEnabled() {
-        return autoRefreshEnabled;
-    }
-
-    public boolean isLoadingMoreEnabled() {
-        return loadingMoreEnabled;
-    }
-
-    int getLoadMoreThreshold() {
-        return loadMoreThreshold;
-    }
-
-    String getUrl() {
-        return url;
-    }
-
-    public boolean isDebugEnabled() {
-        return debugEnabled;
-    }
-
     public boolean isCacheEnabled() {
         return cacheEnabled;
     }
 
+    public DataLoadingConfig setCacheEnabled(boolean cacheEnabled) {
+        this.cacheEnabled = cacheEnabled;
+        return this;
+    }
+
     public boolean isRefreshEnabled() {
         return refreshEnabled;
+    }
+
+    public DataLoadingConfig setRefreshEnabled(boolean refreshEnabled) {
+        this.refreshEnabled = refreshEnabled;
+        return this;
     }
 
     @Override
@@ -135,9 +129,13 @@ public class DataLoadingConfig {
                 '}';
     }
 
-
     public int getPerPage() {
         return perPage;
+    }
+
+    public DataLoadingConfig setPerPage(int perPage) {
+        this.perPage = perPage;
+        return this;
     }
 
     public boolean isConnectionEnabled() {

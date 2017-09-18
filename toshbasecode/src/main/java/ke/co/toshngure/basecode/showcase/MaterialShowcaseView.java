@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -163,9 +163,9 @@ public class MaterialShowcaseView extends FrameLayout implements View.OnTouchLis
 
         View contentView = LayoutInflater.from(getContext()).inflate(R.layout.showcase_content, this, true);
         mContentBox = contentView.findViewById(R.id.content_box);
-        mTitleTextView = (TextView) contentView.findViewById(R.id.tv_title);
-        mContentTextView = (TextView) contentView.findViewById(R.id.tv_content);
-        mDismissButton = (TextView) contentView.findViewById(R.id.tv_dismiss);
+        mTitleTextView = contentView.findViewById(R.id.tv_title);
+        mContentTextView = contentView.findViewById(R.id.tv_content);
+        mDismissButton = contentView.findViewById(R.id.tv_dismiss);
         mDismissButton.setOnClickListener(this);
     }
 

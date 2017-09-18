@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -27,19 +27,19 @@ public class ModelCursor {
         this.before = before;
     }
 
-    public void setAfter(long after) {
-        this.after = after;
-    }
-
-    public void setBefore(long before) {
-        this.before = before;
-    }
-
     public long getAfter() {
         return after;
     }
 
+    public void setAfter(long after) {
+        this.after = after;
+    }
+
     public long getBefore() {
         return before;
+    }
+
+    public void setBefore(long before) {
+        this.before = before;
     }
 }

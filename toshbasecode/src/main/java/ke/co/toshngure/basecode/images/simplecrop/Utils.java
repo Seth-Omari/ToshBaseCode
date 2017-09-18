@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -24,6 +24,9 @@ import java.util.concurrent.Future;
 import ke.co.toshngure.basecode.BuildConfig;
 
 class Utils {
+
+    private final static ExecutorService EXECUTOR_SERVICE = Executors.newCachedThreadPool();
+    private static final String TAG = "scissors.Utils";
 
     public static void checkArg(boolean expression, String msg) {
         if (!expression) {
@@ -48,9 +51,6 @@ class Utils {
         drawable.draw(new Canvas(bitmap));
         return bitmap;
     }
-
-    private final static ExecutorService EXECUTOR_SERVICE = Executors.newCachedThreadPool();
-    private static final String TAG = "scissors.Utils";
 
     public static Future<Void> flushToFile(final Bitmap bitmap,
             final Bitmap.CompressFormat format,

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -17,12 +17,12 @@ public interface PtrHandler {
      * <p/>
      * {@link in.srain.cube.views.ptr.PtrDefaultHandler#checkContentCanBePulledDown}
      */
-    public boolean checkCanDoRefresh(final PtrFrameLayout frame, final View content, final View header);
+    boolean checkCanDoRefresh(final PtrFrameLayout frame, final View content, final View header);
 
     /**
      * When refresh begin
      *
      * @param frame
      */
-    public void onRefreshBegin(final PtrFrameLayout frame);
+    void onRefreshBegin(final PtrFrameLayout frame);
 }

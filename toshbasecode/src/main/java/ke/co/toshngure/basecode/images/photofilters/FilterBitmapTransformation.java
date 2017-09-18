@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -31,16 +31,6 @@ public class FilterBitmapTransformation extends BitmapTransformation {
         super(context);
         this.mPosition = position;
         this.mFilterCategory = category;
-    }
-
-    @Override
-    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
-        return applyFilter(toTransform, mPosition, mFilterCategory);
-    }
-
-    @Override
-    public String getId() {
-        return getClass().getName() + "-" + mPosition +"-"+ mFilterCategory.ordinal();
     }
 
     public static Bitmap applyFilter(Bitmap originalBitmap, int position, FilterCategory category){
@@ -244,6 +234,16 @@ public class FilterBitmapTransformation extends BitmapTransformation {
             default:
                 return 50;
         }
+    }
+
+    @Override
+    protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
+        return applyFilter(toTransform, mPosition, mFilterCategory);
+    }
+
+    @Override
+    public String getId() {
+        return getClass().getName() + "-" + mPosition + "-" + mFilterCategory.ordinal();
     }
 
     /**

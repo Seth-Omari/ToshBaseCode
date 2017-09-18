@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -20,20 +20,6 @@ class ConvolutionMatrix {
 
     ConvolutionMatrix(int size) {
         Matrix = new double[size][size];
-    }
-
-    void setAll(double value) {
-        for (int x = 0; x < SIZE; ++x) {
-            for (int y = 0; y < SIZE; ++y) {
-                Matrix[x][y] = value;
-            }
-        }
-    }
-
-    void applyConfig(double[][] config) {
-        for (int x = 0; x < SIZE; ++x) {
-            System.arraycopy(config[x], 0, Matrix[x], 0, SIZE);
-        }
     }
 
     static Bitmap computeConvolution3x3(Bitmap src, ConvolutionMatrix matrix) {
@@ -81,5 +67,19 @@ class ConvolutionMatrix {
             }
         }
         return result;
+    }
+
+    void setAll(double value) {
+        for (int x = 0; x < SIZE; ++x) {
+            for (int y = 0; y < SIZE; ++y) {
+                Matrix[x][y] = value;
+            }
+        }
+    }
+
+    void applyConfig(double[][] config) {
+        for (int x = 0; x < SIZE; ++x) {
+            System.arraycopy(config[x], 0, Matrix[x], 0, SIZE);
+        }
     }
 }

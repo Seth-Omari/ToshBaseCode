@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -34,11 +34,10 @@ import ke.co.toshngure.basecode.R;
  */
 public class EditSavePhotoFragment extends Fragment {
 
-    private static final String TAG = EditSavePhotoFragment.class.getSimpleName();
     public static final String BITMAP_KEY = "bitmap_byte_array";
     public static final String ROTATION_KEY = "rotation";
     public static final String IMAGE_INFO = "image_info";
-
+    private static final String TAG = EditSavePhotoFragment.class.getSimpleName();
     private static final int REQUEST_STORAGE = 1;
 
     public EditSavePhotoFragment() {
@@ -75,7 +74,7 @@ public class EditSavePhotoFragment extends Fragment {
             return;
         }
 
-        final ImageView photoImageView = (ImageView) view.findViewById(R.id.photo);
+        final ImageView photoImageView = view.findViewById(R.id.photo);
 
         imageParameters.mIsPortrait =
                 getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
@@ -134,7 +133,7 @@ public class EditSavePhotoFragment extends Fragment {
             final boolean isGranted = data.getBooleanExtra(RuntimePermissionActivity.REQUESTED_PERMISSION, false);
             final View view = getView();
             if (isGranted && view != null) {
-                ImageView photoImageView = (ImageView) view.findViewById(R.id.photo);
+                ImageView photoImageView = view.findViewById(R.id.photo);
 
                 Bitmap bitmap = ((BitmapDrawable) photoImageView.getDrawable()).getBitmap();
                 Uri photoUri = ImageUtility.savePicture(getActivity(), bitmap);

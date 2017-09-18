@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -21,11 +21,10 @@ import java.util.Random;
  */
 public class StoreHouseBarItem extends Animation {
 
+    private final Paint mPaint = new Paint();
     public PointF midPoint;
     public float translationX;
     public int index;
-
-    private final Paint mPaint = new Paint();
     private float mFromAlpha = 1.0f;
     private float mToAlpha = 0.4f;
     private PointF mCStartPoint;

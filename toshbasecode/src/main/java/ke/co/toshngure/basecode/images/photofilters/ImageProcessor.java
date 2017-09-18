@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -106,11 +106,11 @@ class ImageProcessor {
         int[] gammaG = new int[MAX_SIZE];
         int[] gammaB = new int[MAX_SIZE];
         for (int i = 0; i < MAX_SIZE; ++i) {
-            gammaR[i] = (int) Math.min(MAX_VALUE_INT,
+            gammaR[i] = Math.min(MAX_VALUE_INT,
                     (int) ((MAX_VALUE_DBL * Math.pow(i / MAX_VALUE_DBL, REVERSE / red)) + 0.5));
-            gammaG[i] = (int) Math.min(MAX_VALUE_INT,
+            gammaG[i] = Math.min(MAX_VALUE_INT,
                     (int) ((MAX_VALUE_DBL * Math.pow(i / MAX_VALUE_DBL, REVERSE / green)) + 0.5));
-            gammaB[i] = (int) Math.min(MAX_VALUE_INT,
+            gammaB[i] = Math.min(MAX_VALUE_INT,
                     (int) ((MAX_VALUE_DBL * Math.pow(i / MAX_VALUE_DBL, REVERSE / blue)) + 0.5));
         }
         for (int x = 0; x < width; ++x) {

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2017.
  *
- * Full Name : Anthony Ngure W.
+ * Anthony Ngure
  *
  * Email : anthonyngure25@gmail.com
  */
@@ -48,18 +48,15 @@ import ke.co.toshngure.basecode.utils.VectorUtils;
 public class BaseTextView extends AppCompatTextView {
 
     public static final String TAG = BaseTextView.class.getSimpleName();
-
-    private static final int DEFAULT_EMOJI_SIZE = 28;
-    private static final int TEXT_START = 0;
-    private static final int TEXT_LENGTH = -1;
-
     public static final Pattern MENTION_PATTERN = Pattern.compile("@([A-Za-z0-9_-]+)");
     public static final Pattern HASHTAG_PATTERN = Pattern.compile("#([A-Za-z0-9_-]+)");
     public static final Pattern WEB_PATTERN = Patterns.WEB_URL;
     public static final int MENTION = 0;
     public static final int HASHTAG = 1;
     public static final int WEB = 2;
-
+    private static final int DEFAULT_EMOJI_SIZE = 28;
+    private static final int TEXT_START = 0;
+    private static final int TEXT_LENGTH = -1;
     private static final long INITIAL_UPDATE_INTERVAL = DateUtils.MINUTE_IN_MILLIS;
 
     private long mReferenceTime;
@@ -323,6 +320,51 @@ public class BaseTextView extends AppCompatTextView {
         super.onRestoreInstanceState(ss.getSuperState());
     }
 
+    private void linkfy() {
+        Matcher hashTag = HASHTAG_PATTERN.matcher(getText());
+        Matcher mention = MENTION_PATTERN.matcher(getText());
+        Matcher webLink = WEB_PATTERN.matcher(getText());
+
+        SpannableString spannableString = new SpannableString(getText());
+        //#hashtags
+        while (hashTag.find()) {
+            spannableString.setSpan(new NonUnderlinedClickableSpan(hashTag.group(), HASHTAG),
+                    hashTag.start(),
+                    hashTag.end(),
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        // @mention
+        while (mention.find()) {
+            spannableString.setSpan(new NonUnderlinedClickableSpan(mention.group(), MENTION),
+                    mention.start(),
+                    mention.end(),
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        //weblink
+        while (webLink.find()) {
+            spannableString.setSpan(new NonUnderlinedClickableSpan(webLink.group(), WEB),
+                    webLink.start(),
+                    webLink.end(),
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+
+        setText(spannableString);
+        setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    public void setLinkEnabledText(String linkEnabledText, @ColorRes int color) {
+        if (linkEnabledText == null) {
+            linkEnabledText = "";
+        }
+        if (color == 0) {
+            color = android.R.color.black;
+        }
+        mLinkColor = color;
+        setText(linkEnabledText);
+        linkfy();
+    }
+
     public static class SavedState extends BaseSavedState {
 
         public static final Creator<SavedState> CREATOR = new Creator<SavedState>() {
@@ -383,52 +425,6 @@ public class BaseTextView extends AppCompatTextView {
             rttv.mHandler.postDelayed(this, interval);
 
         }
-    }
-
-
-    private void linkfy() {
-        Matcher hashTag = HASHTAG_PATTERN.matcher(getText());
-        Matcher mention = MENTION_PATTERN.matcher(getText());
-        Matcher webLink = WEB_PATTERN.matcher(getText());
-
-        SpannableString spannableString = new SpannableString(getText());
-        //#hashtags
-        while (hashTag.find()) {
-            spannableString.setSpan(new NonUnderlinedClickableSpan(hashTag.group(), HASHTAG),
-                    hashTag.start(),
-                    hashTag.end(),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        // @mention
-        while (mention.find()) {
-            spannableString.setSpan(new NonUnderlinedClickableSpan(mention.group(), MENTION),
-                    mention.start(),
-                    mention.end(),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        //weblink
-        while (webLink.find()) {
-            spannableString.setSpan(new NonUnderlinedClickableSpan(webLink.group(), WEB),
-                    webLink.start(),
-                    webLink.end(),
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-
-
-        setText(spannableString);
-        setMovementMethod(LinkMovementMethod.getInstance());
-    }
-
-    public void setLinkEnabledText(String linkEnabledText, @ColorRes int color) {
-        if (linkEnabledText == null) {
-            linkEnabledText = "";
-        }
-        if (color == 0){
-            color = android.R.color.black;
-        }
-        mLinkColor = color;
-        setText(linkEnabledText);
-        linkfy();
     }
 
     public class NonUnderlinedClickableSpan extends ClickableSpan {

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2016. VibeCampo Social Network
+  ~ Copyright (c) 2017.
   ~
-  ~ Website : http://www.vibecampo.com
+  ~ Anthony Ngure
+  ~
+  ~ Email : anthonyngure25@gmail.com
   -->
 
-<ke.co.laysan.baseapp.view.CircleImageView
+<ke.co.toshngure.basecode.view.CircleImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/imageView"
     android:layout_width="wrap_content"
