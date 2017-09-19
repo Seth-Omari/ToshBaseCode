@@ -9,8 +9,10 @@
 <resources>
     <declare-styleable name="BaseDashboardItemView">
         <attr name="itemTitle" format="string" />
+        <attr name="itemTitleColor" format="color" />
         <attr name="itemIcon" format="reference" />
-        <attr name="itemTint" format="color" />
+        <attr name="itemIconTint" format="color" />
+        <attr name="itemIconSize" format="dimension" />
+        <attr name="itemIconBackground" format="color" />
     </declare-styleable>
-
 </resources>

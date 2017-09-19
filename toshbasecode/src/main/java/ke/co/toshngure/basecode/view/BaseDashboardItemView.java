@@ -12,7 +12,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -22,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import ke.co.toshngure.basecode.R;
+import ke.co.toshngure.basecode.utils.BaseUtils;
 
 
 /**
@@ -31,10 +34,9 @@ import ke.co.toshngure.basecode.R;
  */
 public class BaseDashboardItemView extends FrameLayout {
 
+    private static final int DEFAULT_ICON_SIZE = 20;
     private TextView mTitleTV;
     private ImageView mIconIV;
-    @ColorInt
-    private int mTintColor;
 
     public BaseDashboardItemView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
@@ -57,8 +59,27 @@ public class BaseDashboardItemView extends FrameLayout {
 
         setItemTitle(typedArray.getString(R.styleable.BaseDashboardItemView_itemTitle));
         setItemIcon(typedArray.getDrawable(R.styleable.BaseDashboardItemView_itemIcon));
-        mTintColor = typedArray.getColor(R.styleable.BaseDashboardItemView_itemTint, Color.WHITE);
 
+        int titleColor = typedArray.getColor(R.styleable.BaseDashboardItemView_itemTitleColor, Color.WHITE);
+        mTitleTV.setTextColor(titleColor);
+
+        int iconTint = typedArray.getColor(R.styleable.BaseDashboardItemView_itemIconTint, Color.WHITE);
+        mIconIV.setColorFilter(iconTint);
+
+        int iconBackground = typedArray.getColor(R.styleable.BaseDashboardItemView_itemIconBackground,
+                BaseUtils.getColorAttr(getContext(), R.attr.colorPrimaryDark));
+
+        int itemIconSize = typedArray.getDimensionPixelSize(R.styleable.BaseDashboardItemView_itemIconSize, DEFAULT_ICON_SIZE);
+
+        ShapeDrawable shapeDrawable = new ShapeDrawable(new OvalShape());
+        shapeDrawable.setIntrinsicHeight(itemIconSize);
+        shapeDrawable.setIntrinsicWidth(itemIconSize);
+        shapeDrawable.getPaint().setColor(iconBackground);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            mIconIV.setBackground(shapeDrawable);
+        } else {
+            mIconIV.setBackgroundDrawable(shapeDrawable);
+        }
 
         if (isInEditMode()){
             setBadge(5);
