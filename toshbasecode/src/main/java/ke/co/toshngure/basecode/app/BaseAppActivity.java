@@ -113,6 +113,7 @@ public class BaseAppActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_base, menu);
@@ -120,12 +121,16 @@ public class BaseAppActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    public void exitActivity() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.hold, R.anim.slide_right_out);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
-                overridePendingTransition(R.anim.hold, R.anim.slide_right_out);
+                exitActivity();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
