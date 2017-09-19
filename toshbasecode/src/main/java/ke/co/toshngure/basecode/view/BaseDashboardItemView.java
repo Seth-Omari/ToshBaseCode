@@ -34,7 +34,7 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
  */
 public class BaseDashboardItemView extends FrameLayout {
 
-    private static final int DEFAULT_ICON_SIZE = 20;
+    private static final int DEFAULT_ICON_SIZE = 64;
     private TextView mTitleTV;
     private ImageView mIconIV;
 
