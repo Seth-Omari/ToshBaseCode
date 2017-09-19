@@ -10,7 +10,6 @@ package ke.co.toshngure.basecode.app;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
@@ -85,8 +84,6 @@ public class BaseAppActivity extends AppCompatActivity {
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
-        overridePendingTransition(0, 0);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setupToolbar();
         setUpStatusBarColor();
     }
@@ -98,7 +95,7 @@ public class BaseAppActivity extends AppCompatActivity {
     @Override
     public void startActivity(Intent intent) {
         super.startActivity(intent);
-        overridePendingTransition(0, 0);
+        overridePendingTransition(R.anim.slide_left_in, R.anim.hold);
     }
 
     public AppCompatActivity getThis() {
@@ -125,13 +122,11 @@ public class BaseAppActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == android.R.id.home) {
-            this.finish();
-            overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
-            return true;
-        }
         switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                overridePendingTransition(R.anim.hold, R.anim.slide_right_out);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -139,7 +134,9 @@ public class BaseAppActivity extends AppCompatActivity {
 
     public void hideKeyboardFrom(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     public Toolbar getToolbar() {
@@ -186,5 +183,11 @@ public class BaseAppActivity extends AppCompatActivity {
 
     public void toast(@StringRes int string) {
         toast(getString(string));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.hold, R.anim.slide_right_out);
     }
 }
