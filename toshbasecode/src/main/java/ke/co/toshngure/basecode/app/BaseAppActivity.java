@@ -152,11 +152,11 @@ public class BaseAppActivity extends AppCompatActivity {
         showProgressDialog(R.string.message_waiting);
     }
 
-    protected void showProgressDialog(@StringRes int message) {
+    public void showProgressDialog(@StringRes int message) {
         showProgressDialog(getString(message));
     }
 
-    protected void showProgressDialog(String message) {
+    public void showProgressDialog(String message) {
         if (mProgressDialog == null) {
             mProgressDialog = new BaseProgressDialog(this)
                     .setMessage(message)
@@ -180,7 +180,7 @@ public class BaseAppActivity extends AppCompatActivity {
         }
     }
 
-    protected void toastDebug(String msg) {
+    public void toastDebug(String msg) {
         if (BeeLog.DEBUG) {
             toast(msg);
         }
