@@ -15,7 +15,6 @@ import org.json.JSONObject;
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.app.BaseAppActivity;
 import ke.co.toshngure.basecode.log.BeeLog;
-import ke.co.toshngure.basecode.model.Meta;
 import ke.co.toshngure.basecode.networking.ConnectionListener;
 import ke.co.toshngure.basecode.utils.BaseUtils;
 
@@ -99,16 +98,16 @@ public class BaseAppFragment extends Fragment implements ConnectionListener {
                 .show();
     }
 
-    protected void onSuccessResponse(JSONObject data, Meta meta) {
+    protected void onSuccessResponse(JSONObject data, JSONObject meta) {
 
     }
 
-    protected void onSuccessResponse(JSONArray data, Meta meta) {
+    protected void onSuccessResponse(JSONArray data, JSONObject meta) {
 
     }
 
-    protected void onErrorResponse(Meta meta){
-        showErrorAlertDialog(meta.message);
+    protected void onErrorResponse(JSONObject meta){
+
     }
 
     @Override
