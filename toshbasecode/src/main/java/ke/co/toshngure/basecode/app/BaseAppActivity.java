@@ -98,6 +98,12 @@ public class BaseAppActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_left_in, R.anim.hold);
     }
 
+
+    public void startNewTaskActivity(Intent intent){
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     public AppCompatActivity getThis() {
         return this;
     }

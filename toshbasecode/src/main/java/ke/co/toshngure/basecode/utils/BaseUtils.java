@@ -22,10 +22,14 @@ import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.AppCompatButton;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
@@ -43,6 +47,28 @@ import ke.co.toshngure.basecode.annotations.GsonAvoid;
  */
 
 public class BaseUtils {
+
+    public static void cacheInput(@NonNull EditText editText, @StringRes final int key, final PrefUtilsImpl prefUtils) {
+        String currentInput = prefUtils.getString(key);
+        editText.setText(currentInput);
+        editText.setSelection(currentInput.length());
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                prefUtils.writeString(key, charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
 
     public static boolean canConnect(@NonNull Context context) {
         ConnectivityManager connMgr = (ConnectivityManager)
