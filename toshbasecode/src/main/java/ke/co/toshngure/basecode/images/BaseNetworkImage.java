@@ -145,10 +145,16 @@ public class BaseNetworkImage extends FrameLayout {
 
     public void setImageDrawable(Drawable drawable) {
         mImageView.setImageDrawable(drawable);
+        mImageView.setVisibility(VISIBLE);
+        mProgressBar.setVisibility(GONE);
+        mErrorButton.setVisibility(GONE);
     }
 
     public void setImageResource(@DrawableRes int resId) {
         mImageView.setImageResource(resId);
+        mImageView.setVisibility(VISIBLE);
+        mProgressBar.setVisibility(GONE);
+        mErrorButton.setVisibility(GONE);
     }
 
 
