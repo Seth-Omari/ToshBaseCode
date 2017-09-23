@@ -10,7 +10,9 @@ package ke.co.toshngure.basecode.images;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -141,9 +143,14 @@ public class BaseNetworkImage extends FrameLayout {
         return this;
     }
 
-    public ImageView getImageView() {
-        return mImageView;
+    public void setImageDrawable(Drawable drawable) {
+        mImageView.setImageDrawable(drawable);
     }
+
+    public void setImageResource(@DrawableRes int resId) {
+        mImageView.setImageResource(resId);
+    }
+
 
 
     public interface LoadingCallBack {
