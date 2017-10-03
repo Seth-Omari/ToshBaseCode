@@ -6,4 +6,4 @@
  * Email : anthonyngure25@gmail.com
  */
 
-include ':app', ':toshbasecode'
+include ':app', ':toshbasecode', ':toshchatsdk'
