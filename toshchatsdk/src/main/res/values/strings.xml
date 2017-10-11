@@ -8,4 +8,5 @@
 
 <resources>
     <string name="app_name">Tosh Chat SDK</string>
+    <string name="title_activity_conversation">Conversation</string>
 </resources>

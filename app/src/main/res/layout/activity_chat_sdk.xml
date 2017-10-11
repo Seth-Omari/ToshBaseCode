@@ -11,10 +11,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ke.co.laysan.tosh.activity.MainActivity">
+    tools:context="ke.co.laysan.tosh.chatsdksample.activity.ChatSDKActivity">
 
     <include layout="@layout/layout_appbar" />
 
-    <include layout="@layout/content_main" />
+    <FrameLayout
+        android:id="@+id/fragmentsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

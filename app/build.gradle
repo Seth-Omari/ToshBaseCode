@@ -7,6 +7,8 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'project-report'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 26
@@ -25,6 +27,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+}
+
+greendao {
+    schemaVersion 1
 }
 
 dependencies {
@@ -36,5 +49,14 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    implementation 'com.google.firebase:firebase-core:11.4.2'
+    implementation 'com.google.firebase:firebase-database:11.4.2'
     implementation project(':toshbasecode')
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    implementation 'com.github.jaychang0917:SimpleRecyclerView:1.2.3'
+    implementation 'org.greenrobot:greendao:3.2.2'
 }
+
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'
