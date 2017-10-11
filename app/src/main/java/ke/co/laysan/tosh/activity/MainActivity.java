@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ke.co.laysan.tosh.R;
 import ke.co.toshngure.basecode.view.BaseSimpleListItemView;
-import ke.co.toshngure.chatsdk.ConversationBuilder;
 
 public class MainActivity extends BaseActivity {
 
@@ -55,12 +54,12 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.chatSDKSLI)
     public void onViewClicked() {
-        new ConversationBuilder()
+        /*new ConversationBuilder()
                 .withUserName("Anthony Ngure")
                 .withUserId(1)
                 .withPartnerName("Carlistars Wanga")
                 .withPartnerId(2)
-                .startConversation(this);
+                .startConversation(this);*/
 
     }
 }

@@ -229,13 +229,16 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
 
     public void connect() {
         log("connect");
-        ModelCursor modelCursor = getModelCursor();
-
         RequestParams requestParams = new RequestParams();
-        requestParams.put(AFTER, modelCursor.getAfter());
-        requestParams.put(BEFORE, modelCursor.getBefore());
-        requestParams.put(RECENT, !isLoadingMore);
-        requestParams.put(PER_PAGE, mDataLoadingConfig.getPerPage());
+
+        if (mDataLoadingConfig.isCursorsEnabled()){
+            ModelCursor modelCursor = getModelCursor();
+            requestParams.put(AFTER, modelCursor.getAfter());
+            requestParams.put(BEFORE, modelCursor.getBefore());
+            requestParams.put(RECENT, !isLoadingMore);
+            requestParams.put(PER_PAGE, mDataLoadingConfig.getPerPage());
+        }
+
         log("Params : " + requestParams.toString());
         log("Url : " + mDataLoadingConfig.getUrl());
         getClient().get(getActivity(), mDataLoadingConfig.getUrl(), requestParams, new ResponseHandler());
@@ -252,13 +255,16 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
                 List<C> cList = new ArrayList<C>();
                 try {
 
-                    JSONObject meta = params[0].getJSONObject(META);
-                    long after = meta.getJSONObject(CURSORS).getLong(AFTER);
-                    long before = meta.getJSONObject(CURSORS).getLong(BEFORE);
-                    ModelCursor modelCursor = new ModelCursor();
-                    modelCursor.setAfter(after);
-                    modelCursor.setBefore(before);
-                    updateModelCursor(modelCursor);
+                    if (mDataLoadingConfig.isCursorsEnabled()){
+                        JSONObject meta = params[0].getJSONObject(META);
+                        long after = meta.getJSONObject(CURSORS).getLong(AFTER);
+                        long before = meta.getJSONObject(CURSORS).getLong(BEFORE);
+                        ModelCursor modelCursor = new ModelCursor();
+                        modelCursor.setAfter(after);
+                        modelCursor.setBefore(before);
+                        updateModelCursor(modelCursor);
+
+                    }
 
                     JSONArray data = params[0].getJSONArray(DATA);
 
@@ -298,7 +304,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
                 }
 
                 //In case of cursor problems
-                if (mSimpleRecyclerView.isEmpty() && mDataLoadingConfig.isCacheEnabled()) {
+                if (mSimpleRecyclerView.isEmpty() && mDataLoadingConfig.isCacheEnabled() && mDataLoadingConfig.isCursorsEnabled()) {
                     resetCursors();
                 }
 

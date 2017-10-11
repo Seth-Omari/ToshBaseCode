@@ -31,6 +31,7 @@ public class DataLoadingConfig {
     private boolean debugEnabled = false;
     private int perPage = 10;
     private boolean connectionEnabled;
+    private boolean cursorsEnabled = true;
 
     public DataLoadingConfig() {
     }
@@ -41,6 +42,14 @@ public class DataLoadingConfig {
         this.autoRefreshEnabled = false;
         this.connectionEnabled = false;
         return this;
+    }
+
+    public boolean isCursorsEnabled() {
+        return cursorsEnabled;
+    }
+
+    public void setCursorsEnabled(boolean cursorsEnabled) {
+        this.cursorsEnabled = cursorsEnabled;
     }
 
     int getLoaderId() {
