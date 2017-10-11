@@ -11,7 +11,6 @@ package ke.co.toshngure.basecode.dataloading;
 /**
  * Created by Anthony Ngure on 15/09/2017.
  * Email : anthonyngure25@gmail.com.
- *
  */
 
 public class DataLoadingConfig {
@@ -48,8 +47,9 @@ public class DataLoadingConfig {
         return cursorsEnabled;
     }
 
-    public void setCursorsEnabled(boolean cursorsEnabled) {
+    public DataLoadingConfig setCursorsEnabled(boolean cursorsEnabled) {
         this.cursorsEnabled = cursorsEnabled;
+        return this;
     }
 
     int getLoaderId() {
