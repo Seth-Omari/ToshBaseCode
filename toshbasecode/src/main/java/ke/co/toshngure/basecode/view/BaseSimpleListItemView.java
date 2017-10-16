@@ -15,9 +15,11 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import ke.co.toshngure.basecode.R;
@@ -63,7 +65,8 @@ public class BaseSimpleListItemView extends FrameLayout {
 
         int titleTopBottomPadding = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_TitleTopBottomPadding, 0);
         if (titleTopBottomPadding != 0){
-            mTitleTV.setPadding(mTitleTV.getPaddingLeft(), titleTopBottomPadding, mTitleTV.getPaddingRight(), titleTopBottomPadding);
+            int padding = BaseUtils.dpToPx(titleTopBottomPadding);
+            mTitleTV.setPadding(mTitleTV.getPaddingLeft(), padding, mTitleTV.getPaddingRight(), padding);
         }
 
         setSubTitle(typedArray.getString(R.styleable.BaseSimpleListItemView_sli_SubTitle));
@@ -74,6 +77,13 @@ public class BaseSimpleListItemView extends FrameLayout {
         int drawableTint = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_DrawableTint,
                 BaseUtils.getColorAttr(getContext(), R.attr.colorPrimary));
         mDrawableIV.setColorFilter(drawableTint);
+
+        boolean drawableCentered = typedArray.getBoolean(R.styleable.BaseSimpleListItemView_sli_DrawableCentered, false);
+        if (drawableCentered){
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mDrawableIV.getLayoutParams();
+            params.gravity = Gravity.CENTER;
+        }
+
 
         boolean showDivider = typedArray.getBoolean(R.styleable.BaseSimpleListItemView_sli_DividerVisible, true);
         findViewById(R.id.separatorView).setVisibility(showDivider ? VISIBLE : GONE);

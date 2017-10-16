@@ -15,6 +15,7 @@
         <attr name="sli_SubTitleColor" format="color" />
         <attr name="sli_Drawable" format="reference" />
         <attr name="sli_DrawableTint" format="color" />
+        <attr name="sli_DrawableCentered" format="boolean" />
         <attr name="sli_DividerColor" format="boolean" />
         <attr name="sli_DividerVisible" format="boolean" />
     </declare-styleable>
