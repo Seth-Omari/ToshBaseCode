@@ -8,8 +8,10 @@
 
 package ke.co.toshngure.basecode.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -17,6 +19,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
@@ -30,6 +33,7 @@ import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
@@ -43,10 +47,43 @@ import ke.co.toshngure.basecode.annotations.GsonAvoid;
 /**
  * Created by Anthony Ngure on 17/02/2017.
  * Email : anthonyngure25@gmail.com.
- *
  */
 
 public class BaseUtils {
+
+    //stWyc&Y3bsb3M9
+
+    @SuppressLint("MissingPermission")
+    public static void makeCall(Context context, String phone) {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:" + phone));
+        if (callIntent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(Intent.createChooser(callIntent, "Make call..."));
+        } else {
+            Toast.makeText(context, "Unable to find a calling application.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public static void sendSms(Context context, String msg) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, msg);
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(Intent.createChooser(intent, "Send sms..."));
+        } else {
+            Toast.makeText(context, "Unable to find a messaging application.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static void sendEmail(Context context, String emailAddress, String subject, String body) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", emailAddress, null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, body);
+        context.startActivity(Intent.createChooser(emailIntent, "Send email..."));
+    }
+
 
     public static void cacheInput(@NonNull EditText editText, @StringRes final int key, final PrefUtilsImpl prefUtils) {
         String currentInput = prefUtils.getString(key);
@@ -73,7 +110,7 @@ public class BaseUtils {
     public static boolean canConnect(@NonNull Context context) {
         ConnectivityManager connMgr = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        NetworkInfo networkInfo = connMgr != null ? connMgr.getActiveNetworkInfo() : null;
         return networkInfo != null && networkInfo.isConnected();
     }
 
@@ -111,7 +148,7 @@ public class BaseUtils {
             @Override
             public boolean shouldSkipField(FieldAttributes fieldAttributes) {
                 for (String avoidName : avoidNames) {
-                    if (fieldAttributes.getName().equals(avoidName)){
+                    if (fieldAttributes.getName().equals(avoidName)) {
                         return true;
                     }
                 }
@@ -170,23 +207,23 @@ public class BaseUtils {
      * Get the color value for give attribute
      */
     @ColorInt
-    public static int getColorAttr(Context ctx, @AttrRes int colorAttrId){
-        int[] attrs = new int[] { colorAttrId /* index 0 */};
+    public static int getColorAttr(Context ctx, @AttrRes int colorAttrId) {
+        int[] attrs = new int[]{colorAttrId /* index 0 */};
         TypedArray ta = ctx.obtainStyledAttributes(attrs);
         int colorFromTheme = ta.getColor(0, 0);
         ta.recycle();
         return colorFromTheme;
     }
 
-    public static void tintMenu(Activity activity, Menu menu, @ColorInt int color){
-        if(menu != null && menu.size() > 0){
+    public static void tintMenu(Activity activity, Menu menu, @ColorInt int color) {
+        if (menu != null && menu.size() > 0) {
             for (int i = 0; i < menu.size(); i++) {
                 MenuItem item = menu.getItem(i);
                 Drawable icon = item.getIcon();
-                if(icon != null){
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                if (icon != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         icon.setTint(color);
-                    }else{
+                    } else {
                         icon.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
                     }
                 }
