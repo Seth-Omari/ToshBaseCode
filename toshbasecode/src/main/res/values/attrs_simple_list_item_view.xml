@@ -10,6 +10,7 @@
     <declare-styleable name="BaseSimpleListItemView">
         <attr name="sli_Title" format="string" />
         <attr name="sli_TitleColor" format="color" />
+        <attr name="sli_TitleTopBottomPadding" format="integer" />
         <attr name="sli_SubTitle" format="string" />
         <attr name="sli_SubTitleColor" format="color" />
         <attr name="sli_Drawable" format="reference" />

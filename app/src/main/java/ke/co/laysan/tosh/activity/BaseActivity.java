@@ -11,6 +11,7 @@ package ke.co.laysan.tosh.activity;
 import android.annotation.SuppressLint;
 
 import ke.co.toshngure.basecode.app.BaseAppActivity;
+import ke.co.toshngure.basecode.view.BaseSimpleListItemView;
 
 /**
  * Created by Anthony Ngure on 04/10/2017.
@@ -19,4 +20,4 @@ import ke.co.toshngure.basecode.app.BaseAppActivity;
 
 @SuppressLint("Registered")
 public class BaseActivity extends BaseAppActivity {
-}
+    

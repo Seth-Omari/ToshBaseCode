@@ -12,6 +12,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -31,6 +33,10 @@ public class BaseSimpleListItemView extends FrameLayout {
     private TextView mTitleTV;
     private TextView mSubTitleTV;
     private ImageView mDrawableIV;
+
+    public BaseSimpleListItemView(@NonNull Context context) {
+        this(context, null);
+    }
 
     public BaseSimpleListItemView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
@@ -53,7 +59,12 @@ public class BaseSimpleListItemView extends FrameLayout {
 
         setTitle(typedArray.getString(R.styleable.BaseSimpleListItemView_sli_Title));
         int titleColor = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_TitleColor, Color.BLACK);
-        mSubTitleTV.setTextColor(titleColor);
+        mTitleTV.setTextColor(titleColor);
+
+        int titleTopBottomPadding = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_TitleTopBottomPadding, 0);
+        if (titleTopBottomPadding != 0){
+            mTitleTV.setPadding(mTitleTV.getPaddingLeft(), titleTopBottomPadding, mTitleTV.getPaddingRight(), titleTopBottomPadding);
+        }
 
         setSubTitle(typedArray.getString(R.styleable.BaseSimpleListItemView_sli_SubTitle));
         int subTitleColor = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_SubTitleColor, Color.DKGRAY);
@@ -79,6 +90,10 @@ public class BaseSimpleListItemView extends FrameLayout {
         }
     }
 
+    public void setTitleColor(@ColorInt int color){
+        mTitleTV.setTextColor(color);
+    }
+
 
     public void setSubTitle(String subTitle) {
         if (subTitle == null || subTitle.isEmpty()) {
@@ -89,6 +104,10 @@ public class BaseSimpleListItemView extends FrameLayout {
         }
     }
 
+    public void setSubTitleColor(@ColorInt int color){
+        mSubTitleTV.setTextColor(color);
+    }
+
     public void setItemDrawable(Drawable itemDrawable) {
         if (itemDrawable == null) {
             mDrawableIV.setVisibility(GONE);
@@ -96,5 +115,9 @@ public class BaseSimpleListItemView extends FrameLayout {
             mDrawableIV.setImageDrawable(itemDrawable);
             mDrawableIV.setVisibility(VISIBLE);
         }
+    }
+
+    public void setDrawableTint(@ColorInt int drawableTint){
+        mDrawableIV.setColorFilter(drawableTint);
     }
 }
