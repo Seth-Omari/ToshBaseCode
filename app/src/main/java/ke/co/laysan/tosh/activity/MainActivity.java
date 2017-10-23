@@ -54,12 +54,12 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.chatSDKSLI)
     public void onViewClicked() {
-        /*new ConversationBuilder()
+        new ConversationBuilder()
                 .withUserName("Anthony Ngure")
                 .withUserId(1)
                 .withPartnerName("Carlistars Wanga")
                 .withPartnerId(2)
-                .startConversation(this);*/
+                .startConversation(this);
 
     }
 }
