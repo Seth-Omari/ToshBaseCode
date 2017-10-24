@@ -10,7 +10,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/toshbasecode" />
-            <option value="$PROJECT_DIR$/toshchatsdk" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
