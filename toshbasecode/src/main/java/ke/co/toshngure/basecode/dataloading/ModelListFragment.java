@@ -229,7 +229,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
 
     public void connect() {
         log("connect");
-        RequestParams requestParams = new RequestParams();
+        RequestParams requestParams = getRequestParams();
 
         if (mDataLoadingConfig.isCursorsEnabled()){
             ModelCursor modelCursor = getModelCursor();
@@ -241,7 +241,12 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
 
         log("Params : " + requestParams.toString());
         log("Url : " + mDataLoadingConfig.getUrl());
+
         getClient().get(getActivity(), mDataLoadingConfig.getUrl(), requestParams, new ResponseHandler());
+    }
+
+    protected RequestParams getRequestParams() {
+        return new RequestParams();
     }
 
     @SuppressLint("StaticFieldLeak")
