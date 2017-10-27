@@ -42,7 +42,7 @@
             android:text="@string/done" />
     </LinearLayout>
 
-    <com.vibecampo.android.image.crop.CropImageView
+    <ke.co.toshngure.basecode.images.simplecrop.CropImageView
         android:id="@+id/crop_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

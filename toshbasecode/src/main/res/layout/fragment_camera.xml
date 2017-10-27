@@ -10,9 +10,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.vibecampo.android.image.camera.CameraFragment">
+    tools:context="ke.co.toshngure.basecode.images.camera.CameraFragment">
 
-    <com.vibecampo.android.image.camera.SquareCameraPreview
+    <ke.co.toshngure.basecode.images.camera.SquareCameraPreview
         android:id="@+id/camera_preview_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
