@@ -12,9 +12,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
@@ -26,12 +26,13 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.v7.widget.AppCompatButton;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -52,6 +53,11 @@ import ke.co.toshngure.basecode.annotations.GsonAvoid;
 public class BaseUtils {
 
     //stWyc&Y3bsb3M9
+
+    public static float density = 1;
+    public static Point displaySize = new Point();
+    private static int screenHeight = 0;
+    private static int screenWidth = 0;
 
     @SuppressLint("MissingPermission")
     public static void makeCall(Context context, String phone) {
@@ -106,6 +112,31 @@ public class BaseUtils {
             }
         });
     }
+
+    public static int getScreenHeight(Context context) {
+        if (screenHeight == 0) {
+            WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            screenHeight = size.y;
+        }
+
+        return screenHeight;
+    }
+
+    public static int getScreenWidth(Context context) {
+        if (screenWidth == 0) {
+            WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            screenWidth = size.x;
+        }
+
+        return screenWidth;
+    }
+
 
     public static boolean canConnect(@NonNull Context context) {
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -196,11 +227,6 @@ public class BaseUtils {
                 return !isEmpty && (text.length() == length);
             }
         };
-    }
-
-    public static void setButtonBackgroundTintList(AppCompatButton button, int color) {
-        ColorStateList colorStateList = new ColorStateList(new int[][]{new int[0]}, new int[]{color});
-        button.setSupportBackgroundTintList(colorStateList);
     }
 
     /**
