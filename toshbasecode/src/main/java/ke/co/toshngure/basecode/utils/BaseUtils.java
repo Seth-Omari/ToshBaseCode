@@ -34,6 +34,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.ExclusionStrategy;
@@ -58,6 +60,16 @@ public class BaseUtils {
     public static Point displaySize = new Point();
     private static int screenHeight = 0;
     private static int screenWidth = 0;
+
+
+    public static void tintProgressBar(@NonNull ProgressBar progressBar, @ColorInt int color) {
+        progressBar.getIndeterminateDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
+    }
+
+    public static void tintImageView(ImageView imageView, @ColorInt int color) {
+        imageView.setColorFilter(color);
+    }
+
 
     @SuppressLint("MissingPermission")
     public static void makeCall(Context context, String phone) {
