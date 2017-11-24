@@ -6,7 +6,7 @@
  * Email : anthonyngure25@gmail.com
  */
 
-package ke.co.laysan.tosh.activity;
+package ke.co.toshngure.demo.basecode.activity;
 
 import android.annotation.SuppressLint;
 

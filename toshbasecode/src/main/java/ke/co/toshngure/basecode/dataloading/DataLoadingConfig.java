@@ -29,7 +29,7 @@ public class DataLoadingConfig {
     private String url;
     private boolean debugEnabled = false;
     private int perPage = 10;
-    private boolean connectionEnabled;
+    private boolean connectionEnabled = true;
     private boolean cursorsEnabled = true;
 
     public DataLoadingConfig() {

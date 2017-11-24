@@ -16,14 +16,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.jaychang.srv.OnLoadMoreListener;
 import com.jaychang.srv.SimpleCell;
@@ -43,6 +44,7 @@ import java.util.List;
 import cz.msebera.android.httpclient.Header;
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.database.BaseLoader;
+import ke.co.toshngure.basecode.log.BeeLog;
 import ke.co.toshngure.basecode.ptr.PtrClassicFrameLayout;
 import ke.co.toshngure.basecode.ptr.PtrFrameLayout;
 import ke.co.toshngure.basecode.ptr.PtrHandler;
@@ -51,7 +53,6 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
 /**
  * Created by Anthony Ngure on 04/06/2017.
  * Email : anthonyngure25@gmail.com.
- *
  */
 
 public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends Fragment implements
@@ -78,6 +79,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
     private boolean hasMoreToTop = true;
     private boolean isLoadingMore = false;
     private ModelCursor mTempModelCursors;
+    private boolean mAppBarIsExpanded = true;
 
     public ModelListFragment() {
     }
@@ -99,12 +101,14 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
     public void onStart() {
         log("onStart");
         super.onStart();
-        //Load cache data
-        if (mDataLoadingConfig.isCacheEnabled()) {
-            getActivity().getSupportLoaderManager().initLoader(mDataLoadingConfig.getLoaderId(), null, this);
-        } else if (mDataLoadingConfig.isAutoRefreshEnabled()) {
-            mTempModelCursors = new ModelCursor(0, 0);
-            mPtrClassicFrameLayout.autoRefresh();
+        if (mSimpleRecyclerView.isEmpty()) {
+            //Load cache data
+            if (mDataLoadingConfig.isCacheEnabled()) {
+                getActivity().getSupportLoaderManager().initLoader(mDataLoadingConfig.getLoaderId(), null, this);
+            } else if (mDataLoadingConfig.isAutoRefreshEnabled()) {
+                mTempModelCursors = new ModelCursor(0, 0);
+                mPtrClassicFrameLayout.autoRefresh();
+            }
         }
     }
 
@@ -114,12 +118,28 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         mDataLoadingConfig = getDataLoadingConfig();
         log("DataLoadingConfig = " + mDataLoadingConfig.toString());
         log("onCreateView");
-        View view = inflater.inflate(R.layout.fragment_model_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_model_list_2, container, false);
         mSimpleRecyclerView = view.findViewById(R.id.baseapp_simpleRecyclerView);
         mPtrClassicFrameLayout = view.findViewById(R.id.ptrClassicFrameLayout);
         mFreshLoadView = view.findViewById(R.id.freshLoadView);
         setUpSimpleRecyclerView(mSimpleRecyclerView);
+        FrameLayout topViewContainer = view.findViewById(R.id.topViewContainer);
+        setUpTopView(topViewContainer);
+        FrameLayout bottomViewContainer = view.findViewById(R.id.bottomViewContainer);
+        setUpBottomView(bottomViewContainer);
+        AppBarLayout appBarLayout = view.findViewById(R.id.appBarLayout);
+        appBarLayout.addOnOffsetChangedListener((appBarLayout1, verticalOffset) -> {
+            mAppBarIsExpanded = (verticalOffset == 0);
+        });
         return view;
+    }
+
+    protected void setUpBottomView(FrameLayout bottomViewContainer) {
+
+    }
+
+    protected void setUpTopView(FrameLayout topViewContainer) {
+
     }
 
     @Override
@@ -223,6 +243,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
             log("mSimpleRecyclerView.isEmpty() " + mSimpleRecyclerView.isEmpty());
             log("hasMoreToBottom " + hasMoreToBottom);
             log("isLoadingMore " + isLoadingMore);
+            log("mAppBarIsExpanded " + mAppBarIsExpanded);
             log("mDataLoadingConfig.isLoadingMoreEnabled() " + mDataLoadingConfig.isLoadingMoreEnabled());
         }
     }
@@ -231,7 +252,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         log("connect");
         RequestParams requestParams = getRequestParams();
 
-        if (mDataLoadingConfig.isCursorsEnabled()){
+        if (mDataLoadingConfig.isCursorsEnabled()) {
             ModelCursor modelCursor = getModelCursor();
             requestParams.put(AFTER, modelCursor.getAfter());
             requestParams.put(BEFORE, modelCursor.getBefore());
@@ -260,7 +281,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
                 List<C> cList = new ArrayList<C>();
                 try {
 
-                    if (mDataLoadingConfig.isCursorsEnabled()){
+                    if (mDataLoadingConfig.isCursorsEnabled()) {
                         JSONObject meta = params[0].getJSONObject(META);
                         long after = meta.getJSONObject(CURSORS).getLong(AFTER);
                         long before = meta.getJSONObject(CURSORS).getLong(BEFORE);
@@ -334,7 +355,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         return getModelClass().getSimpleName().toLowerCase() + "_" + addUniqueCacheKey();
     }
 
-    private void updateModelCursor(ModelCursor modelCursor) {
+    protected void updateModelCursor(ModelCursor modelCursor) {
         log("updateModelCursor");
         if (mDataLoadingConfig.isCacheEnabled()) {
             getSharedPreferences()
@@ -369,13 +390,11 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
     }
 
     protected void log(String msg) {
-        if ((mDataLoadingConfig != null) && mDataLoadingConfig.isDebugEnabled()) {
-            Log.v(TAG, String.valueOf(msg));
-        }
+        BeeLog.d(TAG, String.valueOf(msg));
     }
 
     private void showErrorAlertDialog(String message) {
-        if (!mDataLoadingConfig.isDebugEnabled()){
+        if (!mDataLoadingConfig.isDebugEnabled()) {
             return;
         }
         if (mDataLoadingConfig.isDebugEnabled()) {
@@ -395,9 +414,13 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
 
     @Override
     public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-        return ((mSimpleRecyclerView.isEmpty() || !mSimpleRecyclerView.canScrollVertically(-1))
+        boolean canDoRefresh = (mSimpleRecyclerView.isEmpty() || !mSimpleRecyclerView.canScrollVertically(-1))
                 && !isLoadingMore
-                && mDataLoadingConfig.isRefreshEnabled());
+                && mDataLoadingConfig.isRefreshEnabled()
+                && mAppBarIsExpanded;
+
+        log("checkCanDoRefresh = " + canDoRefresh);
+        return canDoRefresh;
     }
 
     @Override
@@ -408,12 +431,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         } else {
             log("Refresh Halted");
             if (mDataLoadingConfig.isDebugEnabled()) {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mPtrClassicFrameLayout.refreshComplete();
-                    }
-                }, 3000);
+                new Handler().postDelayed(() -> mPtrClassicFrameLayout.refreshComplete(), 3000);
             } else {
                 mPtrClassicFrameLayout.refreshComplete();
             }
@@ -438,6 +456,11 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         showErrorAlertDialog(String.valueOf(errorResponse));
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
     private final class ResponseHandler extends JsonHttpResponseHandler {
         @Override
         public void onStart() {
@@ -460,7 +483,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         @Override
         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
             super.onSuccess(statusCode, headers, response);
-            log("onSuccess, "+String.valueOf(response));
+            log("onSuccess, " + String.valueOf(response));
             parseData(response);
         }
 
@@ -507,5 +530,4 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         }
 
     }
-
 }

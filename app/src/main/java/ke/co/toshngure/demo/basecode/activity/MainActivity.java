@@ -6,22 +6,19 @@
  * Email : anthonyngure25@gmail.com
  */
 
-package ke.co.laysan.tosh.activity;
+package ke.co.toshngure.demo.basecode.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import ke.co.laysan.tosh.R;
-import ke.co.toshngure.basecode.view.BaseSimpleListItemView;
+import ke.co.toshngure.demo.basecode.R;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.chatSDKSLI)
-    BaseSimpleListItemView chatSDKSLI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -52,8 +49,8 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick(R.id.chatSDKSLI)
-    public void onViewClicked() {
-
+    @OnClick(R.id.dataLoadingSLIV)
+    public void onDataLoadingSLIVClick() {
+        startActivity(new Intent(this,  DataLoadingActivity.class));
     }
 }

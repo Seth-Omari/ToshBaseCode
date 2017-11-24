@@ -1,3 +1,11 @@
+/*
+ * Copyright (c) 2017.
+ *
+ * Anthony Ngure
+ *
+ * Email : anthonyngure25@gmail.com
+ */
+
 package ke.co.toshngure.basecode.fragment;
 
 import android.app.Activity;
@@ -78,11 +86,8 @@ public class BaseAppFragment extends Fragment implements ConnectionListener {
             builder.setCancelable(true)
                     .setTitle(R.string.server_error)
                     .setMessage(response.toString())
-                    .setNegativeButton(R.string.report, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                    .setNegativeButton(R.string.report, (dialog, which) -> {
 
-                        }
                     })
                     .setPositiveButton(android.R.string.ok, null);
             builder.create().show();
