@@ -140,6 +140,12 @@ public class BaseAppFragment extends Fragment implements ConnectionListener {
         toast(getString(string));
     }
 
+    public void toastDebug(String msg) {
+        if (BeeLog.DEBUG) {
+            toast(msg);
+        }
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         BaseUtils.tintMenu(getActivity(), menu, Color.WHITE);

@@ -17,10 +17,8 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +42,7 @@ import java.util.List;
 import cz.msebera.android.httpclient.Header;
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.database.BaseLoader;
+import ke.co.toshngure.basecode.fragment.BaseAppFragment;
 import ke.co.toshngure.basecode.log.BeeLog;
 import ke.co.toshngure.basecode.ptr.PtrClassicFrameLayout;
 import ke.co.toshngure.basecode.ptr.PtrFrameLayout;
@@ -55,7 +54,7 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
  * Email : anthonyngure25@gmail.com.
  */
 
-public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends Fragment implements
+public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends BaseAppFragment implements
         LoaderManager.LoaderCallbacks<List<C>>,
         OnLoadMoreListener, PtrHandler {
 
@@ -391,21 +390,6 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
 
     protected void log(String msg) {
         BeeLog.d(TAG, String.valueOf(msg));
-    }
-
-    private void showErrorAlertDialog(String message) {
-        if (!mDataLoadingConfig.isDebugEnabled()) {
-            return;
-        }
-        if (mDataLoadingConfig.isDebugEnabled()) {
-            try {
-                new AlertDialog.Builder(getActivity())
-                        .setMessage(message)
-                        .create().show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public SimpleRecyclerView getSimpleRecyclerView() {

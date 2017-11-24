@@ -88,10 +88,10 @@ public class UsersFragment extends ModelListFragment<User, UserCell> {
     @Override
     protected void setUpTopView(FrameLayout topViewContainer) {
         super.setUpTopView(topViewContainer);
-        View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_users_top_view, null);
+        /*View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_users_top_view, null);
         BaseNetworkImage topViewNI = view.findViewById(R.id.topViewNI);
         topViewContainer.addView(view);
-        topViewNI.loadImageFromNetwork("https://lorempixel.com/400/400/cats/?33483");
+        topViewNI.loadImageFromNetwork("https://lorempixel.com/400/400/cats/?33483");*/
     }
 
     @Override
