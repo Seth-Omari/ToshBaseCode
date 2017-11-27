@@ -8,7 +8,7 @@
 
 package ke.co.toshngure.basecode.networking;
 
-import android.app.Activity;
+import android.content.Context;
 
 import org.json.JSONObject;
 
@@ -29,6 +29,6 @@ public interface ConnectionListener {
 
     void onConnectionProgress(int progress);
 
-    Activity getListenerContext();
+    Context getListenerContext();
 
 }
