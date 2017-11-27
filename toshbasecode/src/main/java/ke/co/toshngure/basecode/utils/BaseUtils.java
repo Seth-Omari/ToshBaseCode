@@ -94,6 +94,15 @@ public class BaseUtils {
         }
     }
 
+    public static void shareText(Context context, String text) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, text);
+        sendIntent.setType("text/plain");
+        Intent intent = Intent.createChooser(sendIntent, "Share with...");
+        context.startActivity(intent);
+    }
+
     public static void sendEmail(Context context, String emailAddress, String subject, String body) {
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                 "mailto", emailAddress, null));
