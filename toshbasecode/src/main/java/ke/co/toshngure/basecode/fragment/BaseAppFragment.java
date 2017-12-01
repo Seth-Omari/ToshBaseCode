@@ -8,8 +8,7 @@
 
 package ke.co.toshngure.basecode.fragment;
 
-import android.app.Activity;
-import android.content.DialogInterface;
+import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
@@ -17,7 +16,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuInflater;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import ke.co.toshngure.basecode.R;
@@ -74,12 +72,7 @@ public class BaseAppFragment extends Fragment implements ConnectionListener {
                     .setTitle(R.string.connection_timed_out)
                     .setMessage(R.string.error_connection)
                     .setNegativeButton(R.string.cancel, null)
-                    .setPositiveButton(R.string.retry, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            connect();
-                        }
-                    }).create().show();
+                    .setPositiveButton(R.string.retry, (dialog, which) -> connect()).create().show();
         } else {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -103,18 +96,6 @@ public class BaseAppFragment extends Fragment implements ConnectionListener {
                 .show();
     }
 
-    protected void onSuccessResponse(JSONObject data, JSONObject meta) {
-
-    }
-
-    protected void onSuccessResponse(JSONArray data, JSONObject meta) {
-
-    }
-
-    protected void onErrorResponse(JSONObject meta){
-
-    }
-
     @Override
     public void onConnectionSuccess(JSONObject response) {
         BeeLog.d(TAG, "onConnectionSuccess, Response = " + String.valueOf(response));
@@ -127,7 +108,7 @@ public class BaseAppFragment extends Fragment implements ConnectionListener {
     }
 
     @Override
-    public Activity getListenerContext() {
+    public Context getListenerContext() {
         return getActivity();
     }
 
