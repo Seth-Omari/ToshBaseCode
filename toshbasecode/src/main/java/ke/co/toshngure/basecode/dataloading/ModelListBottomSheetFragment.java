@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
@@ -55,13 +55,13 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
  * Email : anthonyngure25@gmail.com.
  */
 
-public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends Fragment implements
-        LoaderManager.LoaderCallbacks<List<C>>,
+public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>> extends BottomSheetDialogFragment
+        implements LoaderManager.LoaderCallbacks<List<C>>,
         OnLoadMoreListener, PtrHandler {
 
     protected static final String ARG_POSITION = "arg_position";
     private static final String SHARED_PREFS_NAME = "data_loading_prefs";
-    private static final String TAG = ModelListFragment.class.getSimpleName();
+    private static final String TAG = ModelListBottomSheetFragment.class.getSimpleName();
     private static final String META = "meta";
     private static final String DATA = "data";
     private static final String AFTER = "after";
@@ -81,7 +81,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
     private ModelCursor mTempModelCursors;
     private boolean mAppBarIsExpanded = true;
 
-    public ModelListFragment() {
+    public ModelListBottomSheetFragment() {
     }
 
     private SharedPreferences getSharedPreferences() {
@@ -448,6 +448,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
                 .create()
                 .show();
     }
+
 
     @Override
     public void onDestroy() {
