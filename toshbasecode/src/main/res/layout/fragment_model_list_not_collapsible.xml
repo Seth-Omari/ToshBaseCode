@@ -18,8 +18,7 @@
         android:id="@+id/topViewContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/holo_blue_dark" />
+        android:layout_alignParentTop="true" />
 
     <FrameLayout
         android:layout_width="match_parent"
