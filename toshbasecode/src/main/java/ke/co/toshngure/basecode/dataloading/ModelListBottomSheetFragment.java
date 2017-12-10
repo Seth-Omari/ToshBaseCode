@@ -73,7 +73,7 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
     protected int mPosition = 0;
     private SimpleRecyclerView mSimpleRecyclerView;
     private PtrClassicFrameLayout mPtrClassicFrameLayout;
-    private View mFreshLoadView;
+    private FrameLayout mFreshLoadViewContainer;
     private DataLoadingConfig mDataLoadingConfig;
     private boolean hasMoreToBottom = true;
     private boolean hasMoreToTop = true;
@@ -121,7 +121,11 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
         View view = inflater.inflate(R.layout.fragment_model_list, container, false);
         mSimpleRecyclerView = view.findViewById(R.id.baseapp_simpleRecyclerView);
         mPtrClassicFrameLayout = view.findViewById(R.id.ptrClassicFrameLayout);
-        mFreshLoadView = view.findViewById(R.id.freshLoadViewContainer);
+
+        mFreshLoadViewContainer = view.findViewById(R.id.freshLoadViewContainer);
+
+        setUpFreshLoadView(mFreshLoadViewContainer);
+
         setUpSimpleRecyclerView(mSimpleRecyclerView);
         FrameLayout topViewContainer = view.findViewById(R.id.topViewContainer);
         setUpTopView(topViewContainer);
@@ -132,6 +136,20 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
             mAppBarIsExpanded = (verticalOffset == 0);
         });
         return view;
+    }
+
+    /**
+     * The container already has centred view that can be replaced
+     * When adding your own view please call remove all views on the freshLoadViewContainer
+     * You should add one view/ViewGroup with layout_gravity = centre
+     * <p>
+     * NOTE: To customize loadingMoreView please call setLoadingMoreView in the setUpSimpleRecyclerView
+     * method
+     *
+     * @param freshLoadViewContainer
+     */
+    protected void setUpFreshLoadView(FrameLayout freshLoadViewContainer) {
+
     }
 
     protected void setUpBottomView(FrameLayout bottomViewContainer) {
@@ -152,6 +170,11 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
         mPtrClassicFrameLayout.setHeaderView(View.inflate(getActivity(), R.layout.view_load_fresh, null));
     }
 
+    /**
+     * To customize loadingMoreView please call setLoadingMoreView
+     *
+     * @param simpleRecyclerView
+     */
     protected void setUpSimpleRecyclerView(SimpleRecyclerView simpleRecyclerView) {
     }
 
@@ -193,7 +216,7 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
         log("Data Size = " + data.size());
 
         mPtrClassicFrameLayout.setVisibility(View.VISIBLE);
-        mFreshLoadView.setVisibility(View.GONE);
+        mFreshLoadViewContainer.setVisibility(View.GONE);
 
         mSimpleRecyclerView.removeAllCells();
         mSimpleRecyclerView.addCells(data);
@@ -206,7 +229,7 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
 
         if (!mDataLoadingConfig.isConnectionEnabled()) {
             mPtrClassicFrameLayout.setVisibility(View.VISIBLE);
-            mFreshLoadView.setVisibility(View.GONE);
+            mFreshLoadViewContainer.setVisibility(View.GONE);
             if (mSimpleRecyclerView.isEmpty()) {
                 mSimpleRecyclerView.showEmptyStateView();
             } else {
@@ -314,7 +337,7 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
                 log("onPostExecute");
                 log("Data Size : " + cs.size());
 
-                mFreshLoadView.setVisibility(View.GONE);
+                mFreshLoadViewContainer.setVisibility(View.GONE);
                 mPtrClassicFrameLayout.setVisibility(View.VISIBLE);
 
                 if (mPtrClassicFrameLayout.isRefreshing() || mPtrClassicFrameLayout.isAutoRefresh()) {
@@ -461,10 +484,10 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
         public void onStart() {
             super.onStart();
             if (mSimpleRecyclerView.isEmpty()) {
-                mFreshLoadView.setVisibility(View.VISIBLE);
+                mFreshLoadViewContainer.setVisibility(View.VISIBLE);
                 mPtrClassicFrameLayout.setVisibility(View.GONE);
             } else {
-                mFreshLoadView.setVisibility(View.GONE);
+                mFreshLoadViewContainer.setVisibility(View.GONE);
                 mPtrClassicFrameLayout.setVisibility(View.VISIBLE);
             }
             //mSimpleRecyclerView.hideEmptyStateView();

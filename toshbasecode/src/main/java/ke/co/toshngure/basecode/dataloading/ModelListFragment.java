@@ -124,7 +124,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
 
         mFreshLoadViewContainer = view.findViewById(R.id.freshLoadViewContainer);
 
-        setUpFreshLoadViewContainer(mFreshLoadViewContainer);
+        setUpFreshLoadView(mFreshLoadViewContainer);
 
         setUpSimpleRecyclerView(mSimpleRecyclerView);
         FrameLayout topViewContainer = view.findViewById(R.id.topViewContainer);
@@ -148,7 +148,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
      *
      * @param freshLoadViewContainer
      */
-    protected void setUpFreshLoadViewContainer(FrameLayout freshLoadViewContainer) {
+    protected void setUpFreshLoadView(FrameLayout freshLoadViewContainer) {
 
     }
 
