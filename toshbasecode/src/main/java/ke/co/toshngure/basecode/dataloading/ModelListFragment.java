@@ -227,11 +227,12 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
 
     @Override
     public void onLoadMore(@NonNull SimpleRecyclerView simpleRecyclerView) {
-        //Should not load more when empty and when loading fresh
+        //Should not load more when empty and when loading fresh and when cursors are disabled
         if (!mPtrClassicFrameLayout.isRefreshing()
                 && !mSimpleRecyclerView.isEmpty()
                 && hasMoreToBottom
                 && !isLoadingMore
+                && mDataLoadingConfig.isCursorsEnabled()
                 && mDataLoadingConfig.isLoadingMoreEnabled()) {
             log("onLoadMore");
             mSimpleRecyclerView.setLoadingMore(true);
@@ -401,6 +402,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
     public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
         boolean canDoRefresh = (mSimpleRecyclerView.isEmpty() || !mSimpleRecyclerView.canScrollVertically(-1))
                 && !isLoadingMore
+                && mDataLoadingConfig.isCursorsEnabled()
                 && mDataLoadingConfig.isRefreshEnabled()
                 && mAppBarIsExpanded;
 

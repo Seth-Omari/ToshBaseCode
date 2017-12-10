@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.BottomSheetDialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
@@ -55,8 +55,8 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
  * Email : anthonyngure25@gmail.com.
  */
 
-public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>> extends BottomSheetDialogFragment
-        implements LoaderManager.LoaderCallbacks<List<C>>,
+public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>> extends Fragment implements
+        LoaderManager.LoaderCallbacks<List<C>>,
         OnLoadMoreListener, PtrHandler {
 
     protected static final String ARG_POSITION = "arg_position";
@@ -227,11 +227,12 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
 
     @Override
     public void onLoadMore(@NonNull SimpleRecyclerView simpleRecyclerView) {
-        //Should not load more when empty and when loading fresh
+        //Should not load more when empty and when loading fresh and when cursors are disabled
         if (!mPtrClassicFrameLayout.isRefreshing()
                 && !mSimpleRecyclerView.isEmpty()
                 && hasMoreToBottom
                 && !isLoadingMore
+                && mDataLoadingConfig.isCursorsEnabled()
                 && mDataLoadingConfig.isLoadingMoreEnabled()) {
             log("onLoadMore");
             mSimpleRecyclerView.setLoadingMore(true);
@@ -401,6 +402,7 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
     public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
         boolean canDoRefresh = (mSimpleRecyclerView.isEmpty() || !mSimpleRecyclerView.canScrollVertically(-1))
                 && !isLoadingMore
+                && mDataLoadingConfig.isCursorsEnabled()
                 && mDataLoadingConfig.isRefreshEnabled()
                 && mAppBarIsExpanded;
 
@@ -448,7 +450,6 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
                 .create()
                 .show();
     }
-
 
     @Override
     public void onDestroy() {
