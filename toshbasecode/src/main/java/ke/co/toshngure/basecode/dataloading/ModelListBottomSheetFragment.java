@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
@@ -55,7 +55,7 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
  * Email : anthonyngure25@gmail.com.
  */
 
-public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>> extends Fragment implements
+public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>> extends BottomSheetDialogFragment implements
         LoaderManager.LoaderCallbacks<List<C>>,
         OnLoadMoreListener, PtrHandler {
 
