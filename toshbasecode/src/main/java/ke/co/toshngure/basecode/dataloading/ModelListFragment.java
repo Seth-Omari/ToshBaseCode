@@ -73,7 +73,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
     protected int mPosition = 0;
     private SimpleRecyclerView mSimpleRecyclerView;
     private PtrClassicFrameLayout mPtrClassicFrameLayout;
-    private View mFreshLoadView;
+    private FrameLayout mFreshLoadViewContainer;
     private DataLoadingConfig mDataLoadingConfig;
     private boolean hasMoreToBottom = true;
     private boolean hasMoreToTop = true;
@@ -118,10 +118,14 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         mDataLoadingConfig = getDataLoadingConfig();
         log("DataLoadingConfig = " + mDataLoadingConfig.toString());
         log("onCreateView");
-        View view = inflater.inflate(R.layout.fragment_model_list_2, container, false);
+        View view = inflater.inflate(R.layout.fragment_model_list, container, false);
         mSimpleRecyclerView = view.findViewById(R.id.baseapp_simpleRecyclerView);
         mPtrClassicFrameLayout = view.findViewById(R.id.ptrClassicFrameLayout);
-        mFreshLoadView = view.findViewById(R.id.freshLoadView);
+
+        mFreshLoadViewContainer = view.findViewById(R.id.freshLoadViewContainer);
+
+        setUpFreshLoadViewContainer(mFreshLoadViewContainer);
+
         setUpSimpleRecyclerView(mSimpleRecyclerView);
         FrameLayout topViewContainer = view.findViewById(R.id.topViewContainer);
         setUpTopView(topViewContainer);
@@ -132,6 +136,20 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
             mAppBarIsExpanded = (verticalOffset == 0);
         });
         return view;
+    }
+
+    /**
+     * The container already has centred view that can be replaced
+     * When adding your own view please call remove all views on the freshLoadViewContainer
+     * You should add one view/ViewGroup with layout_gravity = centre
+     * <p>
+     * NOTE: To customize loadingMoreView please call setLoadingMoreView in the setUpSimpleRecyclerView
+     * method
+     *
+     * @param freshLoadViewContainer
+     */
+    protected void setUpFreshLoadViewContainer(FrameLayout freshLoadViewContainer) {
+
     }
 
     protected void setUpBottomView(FrameLayout bottomViewContainer) {
@@ -152,6 +170,10 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         mPtrClassicFrameLayout.setHeaderView(View.inflate(getActivity(), R.layout.view_load_fresh, null));
     }
 
+    /**
+     * To customize loadingMoreView please call setLoadingMoreView
+     * @param simpleRecyclerView
+     */
     protected void setUpSimpleRecyclerView(SimpleRecyclerView simpleRecyclerView) {
     }
 
@@ -193,7 +215,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         log("Data Size = " + data.size());
 
         mPtrClassicFrameLayout.setVisibility(View.VISIBLE);
-        mFreshLoadView.setVisibility(View.GONE);
+        mFreshLoadViewContainer.setVisibility(View.GONE);
 
         mSimpleRecyclerView.removeAllCells();
         mSimpleRecyclerView.addCells(data);
@@ -206,7 +228,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
 
         if (!mDataLoadingConfig.isConnectionEnabled()) {
             mPtrClassicFrameLayout.setVisibility(View.VISIBLE);
-            mFreshLoadView.setVisibility(View.GONE);
+            mFreshLoadViewContainer.setVisibility(View.GONE);
             if (mSimpleRecyclerView.isEmpty()) {
                 mSimpleRecyclerView.showEmptyStateView();
             } else {
@@ -314,7 +336,7 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
                 log("onPostExecute");
                 log("Data Size : " + cs.size());
 
-                mFreshLoadView.setVisibility(View.GONE);
+                mFreshLoadViewContainer.setVisibility(View.GONE);
                 mPtrClassicFrameLayout.setVisibility(View.VISIBLE);
 
                 if (mPtrClassicFrameLayout.isRefreshing() || mPtrClassicFrameLayout.isAutoRefresh()) {
@@ -461,10 +483,10 @@ public abstract class ModelListFragment<M, C extends SimpleCell<M, ?>> extends F
         public void onStart() {
             super.onStart();
             if (mSimpleRecyclerView.isEmpty()) {
-                mFreshLoadView.setVisibility(View.VISIBLE);
+                mFreshLoadViewContainer.setVisibility(View.VISIBLE);
                 mPtrClassicFrameLayout.setVisibility(View.GONE);
             } else {
-                mFreshLoadView.setVisibility(View.GONE);
+                mFreshLoadViewContainer.setVisibility(View.GONE);
                 mPtrClassicFrameLayout.setVisibility(View.VISIBLE);
             }
             //mSimpleRecyclerView.hideEmptyStateView();

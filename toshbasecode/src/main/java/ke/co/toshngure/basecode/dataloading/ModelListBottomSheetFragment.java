@@ -118,10 +118,10 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
         mDataLoadingConfig = getDataLoadingConfig();
         log("DataLoadingConfig = " + mDataLoadingConfig.toString());
         log("onCreateView");
-        View view = inflater.inflate(R.layout.fragment_model_list_2, container, false);
+        View view = inflater.inflate(R.layout.fragment_model_list, container, false);
         mSimpleRecyclerView = view.findViewById(R.id.baseapp_simpleRecyclerView);
         mPtrClassicFrameLayout = view.findViewById(R.id.ptrClassicFrameLayout);
-        mFreshLoadView = view.findViewById(R.id.freshLoadView);
+        mFreshLoadView = view.findViewById(R.id.freshLoadViewContainer);
         setUpSimpleRecyclerView(mSimpleRecyclerView);
         FrameLayout topViewContainer = view.findViewById(R.id.topViewContainer);
         setUpTopView(topViewContainer);
