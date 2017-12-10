@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -21,6 +22,7 @@ import android.support.design.widget.BottomSheetDialogFragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -118,7 +120,12 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
         mDataLoadingConfig = getDataLoadingConfig();
         log("DataLoadingConfig = " + mDataLoadingConfig.toString());
         log("onCreateView");
-        View view = inflater.inflate(R.layout.fragment_model_list, container, false);
+        View view;
+        if (hasCollapsibleTopView()) {
+            view = inflater.inflate(R.layout.fragment_model_list_collapsible, container, false);
+        } else {
+            view = inflater.inflate(R.layout.fragment_model_list_not_collapsible, container, false);
+        }
         mSimpleRecyclerView = view.findViewById(R.id.baseapp_simpleRecyclerView);
         mPtrClassicFrameLayout = view.findViewById(R.id.ptrClassicFrameLayout);
 
@@ -131,26 +138,33 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
         setUpTopView(topViewContainer);
         FrameLayout bottomViewContainer = view.findViewById(R.id.bottomViewContainer);
         setUpBottomView(bottomViewContainer);
-        AppBarLayout appBarLayout = view.findViewById(R.id.appBarLayout);
-        appBarLayout.addOnOffsetChangedListener((appBarLayout1, verticalOffset) -> {
-            mAppBarIsExpanded = (verticalOffset == 0);
-        });
+        if (hasCollapsibleTopView()) {
+            AppBarLayout appBarLayout = view.findViewById(R.id.appBarLayout);
+            appBarLayout.addOnOffsetChangedListener((appBarLayout1, verticalOffset) -> {
+                mAppBarIsExpanded = (verticalOffset == 0);
+            });
+        }
         return view;
     }
 
-    /**
-     * The container already has centred view that can be replaced
-     * When adding your own view please call remove all views on the freshLoadViewContainer
-     * You should add one view/ViewGroup with layout_gravity = centre
-     * <p>
-     * NOTE: To customize loadingMoreView please call setLoadingMoreView in the setUpSimpleRecyclerView
-     * method
-     *
-     * @param freshLoadViewContainer
-     */
-    protected void setUpFreshLoadView(FrameLayout freshLoadViewContainer) {
-
+    private void setUpFreshLoadView(FrameLayout freshLoadViewContainer) {
+        View view = LayoutInflater.from(getContext()).inflate(getFreshLoadView(), null);
+        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.gravity = Gravity.CENTER;
+        freshLoadViewContainer.addView(view, layoutParams);
     }
+
+    /**
+     * Override this method to replace the fresh load view
+     *
+     * @return view to show when doing a fresh load
+     */
+    @LayoutRes
+    protected int getFreshLoadView() {
+        return R.layout.view_load_fresh;
+    }
+
 
     protected void setUpBottomView(FrameLayout bottomViewContainer) {
 
@@ -158,6 +172,10 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
 
     protected void setUpTopView(FrameLayout topViewContainer) {
 
+    }
+
+    protected boolean hasCollapsibleTopView() {
+        return true;
     }
 
     @Override
@@ -172,10 +190,12 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
 
     /**
      * To customize loadingMoreView please call setLoadingMoreView
+     * To customize EMPTY VIEW please call setEmptyStateView
      *
      * @param simpleRecyclerView
      */
     protected void setUpSimpleRecyclerView(SimpleRecyclerView simpleRecyclerView) {
+
     }
 
     /*Override this method to read cached items*/
