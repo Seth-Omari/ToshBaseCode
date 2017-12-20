@@ -151,8 +151,12 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
         View view = LayoutInflater.from(getContext()).inflate(getFreshLoadView(), null);
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
                 FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        layoutParams.gravity = Gravity.CENTER;
+        layoutParams.gravity = getFreshLoadViewGravity();
         freshLoadViewContainer.addView(view, layoutParams);
+    }
+
+    protected int getFreshLoadViewGravity() {
+        return Gravity.CENTER;
     }
 
     /**
