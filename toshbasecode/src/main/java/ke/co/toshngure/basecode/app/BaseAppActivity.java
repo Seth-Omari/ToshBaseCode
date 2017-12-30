@@ -111,7 +111,6 @@ public class BaseAppActivity extends AppCompatActivity {
     protected void setupToolbar() {
         toolbar = findViewById(R.id.toolbar);
         if (toolbar != null) {
-            toolbar.setTitleTextColor(Color.WHITE);
             setSupportActionBar(toolbar);
             if (getSupportActionBar() != null) {
                 getSupportActionBar().setElevation(0);
