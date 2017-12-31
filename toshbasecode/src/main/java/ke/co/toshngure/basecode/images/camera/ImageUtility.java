@@ -67,8 +67,10 @@ public class ImageUtility {
 
         bitmap = ThumbnailUtils.extractThumbnail(bitmap, cropHeight, cropHeight, ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
 
-        String fileName = "Camera" + File.separator + System.currentTimeMillis() + ".jpg";
-        File mediaFile = new File(FileUtil.getAppExternalDirectoryFolder(context), fileName);
+        String fileName = System.currentTimeMillis() + ".jpg";
+
+
+        File mediaFile = new File(FileUtil.getFolderInAppExternalDirectory(context, "Camera"), fileName);
         // Saving the bitmap
         try {
             ByteArrayOutputStream out = new ByteArrayOutputStream();

@@ -164,4 +164,12 @@ public class FileUtil {
 
         return file.getPath();
     }
+
+    public static String getFolderInAppExternalDirectory(Context context, String folderName) {
+        File file = new File(getAppExternalDirectoryFolder(context), folderName);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        return file.getPath();
+    }
 }
