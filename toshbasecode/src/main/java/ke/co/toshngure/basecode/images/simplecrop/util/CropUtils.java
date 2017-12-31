@@ -50,6 +50,19 @@ public class CropUtils {
     }
 
     /**
+     * Pick image from an Activity
+     *
+     * @param activity Activity to receive result
+     */
+    public static void pickImage(Activity activity, int requestCode) {
+        try {
+            activity.startActivityForResult(getImagePicker(), requestCode);
+        } catch (ActivityNotFoundException e) {
+            showImagePickerError(activity);
+        }
+    }
+
+    /**
      * Pick image from a support library Fragment
      *
      * @param context  Context

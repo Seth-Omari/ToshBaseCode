@@ -17,7 +17,6 @@ import android.graphics.Point;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.util.Base64;
 import android.view.Display;
 import android.view.WindowManager;
@@ -27,7 +26,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import ke.co.toshngure.basecode.R;
+import ke.co.toshngure.basecode.images.compression.FileUtil;
 
 public class ImageUtility {
 
@@ -68,8 +67,8 @@ public class ImageUtility {
 
         bitmap = ThumbnailUtils.extractThumbnail(bitmap, cropHeight, cropHeight, ThumbnailUtils.OPTIONS_RECYCLE_INPUT);
 
-        String fileName = context.getResources().getString(R.string.app_name)+System.currentTimeMillis()+".jpg";
-        File mediaFile = new File(Environment.getExternalStorageDirectory().getPath(), fileName);
+        String fileName = "Camera" + File.pathSeparator + System.currentTimeMillis() + ".jpg";
+        File mediaFile = new File(FileUtil.getAppExternalDirectoryFolder(context), fileName);
         // Saving the bitmap
         try {
             ByteArrayOutputStream out = new ByteArrayOutputStream();

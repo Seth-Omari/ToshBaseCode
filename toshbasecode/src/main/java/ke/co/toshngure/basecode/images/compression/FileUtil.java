@@ -11,6 +11,7 @@ package ke.co.toshngure.basecode.images.compression;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Log;
@@ -21,6 +22,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import ke.co.toshngure.basecode.R;
 
 /**
  * Created on : June 18, 2016
@@ -63,7 +66,7 @@ public class FileUtil {
         return tempFile;
     }
 
-    static String[] splitFileName(String fileName) {
+    public static String[] splitFileName(String fileName) {
         String name = fileName;
         String extension = "";
         int i = fileName.lastIndexOf(".");
@@ -75,7 +78,7 @@ public class FileUtil {
         return new String[]{name, extension};
     }
 
-    static String getFileName(Context context, Uri uri) {
+    public static String getFileName(Context context, Uri uri) {
         String result = null;
         if (uri.getScheme().equals("content")) {
             Cursor cursor = context.getContentResolver().query(uri, null, null, null, null);
@@ -101,7 +104,7 @@ public class FileUtil {
         return result;
     }
 
-    static String getRealPathFromURI(Context context, Uri contentUri) {
+    public static String getRealPathFromURI(Context context, Uri contentUri) {
         Cursor cursor = context.getContentResolver().query(contentUri, null, null, null, null);
         if (cursor == null) {
             return contentUri.getPath();
@@ -114,7 +117,7 @@ public class FileUtil {
         }
     }
 
-    static File rename(File file, String newName) {
+    public static File rename(File file, String newName) {
         File newFile = new File(file.getParent(), newName);
         if (!newFile.equals(file)) {
             if (newFile.exists()) {
@@ -129,7 +132,7 @@ public class FileUtil {
         return newFile;
     }
 
-    static int copy(InputStream input, OutputStream output) throws IOException {
+    public static int copy(InputStream input, OutputStream output) throws IOException {
         long count = copyLarge(input, output);
         if (count > Integer.MAX_VALUE) {
             return -1;
@@ -137,12 +140,12 @@ public class FileUtil {
         return (int) count;
     }
 
-    static long copyLarge(InputStream input, OutputStream output)
+    public static long copyLarge(InputStream input, OutputStream output)
             throws IOException {
         return copyLarge(input, output, new byte[DEFAULT_BUFFER_SIZE]);
     }
 
-    static long copyLarge(InputStream input, OutputStream output, byte[] buffer)
+    public static long copyLarge(InputStream input, OutputStream output, byte[] buffer)
             throws IOException {
         long count = 0;
         int n;
@@ -151,5 +154,14 @@ public class FileUtil {
             count += n;
         }
         return count;
+    }
+
+    public static String getAppExternalDirectoryFolder(Context context) {
+        File file = new File(Environment.getExternalStorageDirectory().getPath(), context.getResources().getString(R.string.app_name));
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+
+        return file.getPath();
     }
 }

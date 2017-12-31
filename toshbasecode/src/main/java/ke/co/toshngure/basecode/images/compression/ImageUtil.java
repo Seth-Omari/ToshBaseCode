@@ -39,7 +39,7 @@ class ImageUtil {
 
     }
 
-    static Bitmap getScaledBitmap(Context context, Uri imageUri, float maxWidth, float maxHeight, Bitmap.Config bitmapConfig) {
+    public static Bitmap getScaledBitmap(Context context, Uri imageUri, float maxWidth, float maxHeight, Bitmap.Config bitmapConfig) {
         String filePath = FileUtil.getRealPathFromURI(context, imageUri);
         Bitmap scaledBitmap = null;
 
@@ -160,9 +160,9 @@ class ImageUtil {
         return scaledBitmap;
     }
 
-    static File compressImage(Context context, Uri imageUri, float maxWidth, float maxHeight,
-                              Bitmap.CompressFormat compressFormat, Bitmap.Config bitmapConfig,
-                              int quality, String parentPath, String prefix, String fileName) {
+    public static File compressImage(Context context, Uri imageUri, float maxWidth, float maxHeight,
+                                     Bitmap.CompressFormat compressFormat, Bitmap.Config bitmapConfig,
+                                     int quality, String parentPath, String prefix, String fileName) {
         FileOutputStream out = null;
         String filename = generateFilePath(context, parentPath, imageUri, compressFormat.name().toLowerCase(), prefix, fileName);
         try {
