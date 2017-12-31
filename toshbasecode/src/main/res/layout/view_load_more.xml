@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:visibility="visible"
-        app:indicatorColor="?attr/colorAccent"
+        app:indicatorColor="?attr/AVLoadingIndicatorColor"
         app:indicatorName="BallPulseIndicator" />
 
 </FrameLayout>

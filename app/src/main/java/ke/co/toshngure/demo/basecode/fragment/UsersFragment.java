@@ -24,7 +24,7 @@ import com.loopj.android.http.AsyncHttpClient;
 
 import ke.co.toshngure.basecode.dataloading.DataLoadingConfig;
 import ke.co.toshngure.basecode.dataloading.ModelCursor;
-import ke.co.toshngure.basecode.dataloading.ModelListFragment;
+import ke.co.toshngure.basecode.dataloading.ModelListBottomSheetFragment;
 import ke.co.toshngure.basecode.images.BaseNetworkImage;
 import ke.co.toshngure.demo.basecode.R;
 import ke.co.toshngure.demo.basecode.cell.UserCell;
@@ -34,7 +34,7 @@ import ke.co.toshngure.demo.basecode.network.Client;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UsersFragment extends ModelListFragment<User, UserCell> {
+public class UsersFragment extends ModelListBottomSheetFragment<User, UserCell> {
 
 
     public UsersFragment() {
@@ -95,10 +95,10 @@ public class UsersFragment extends ModelListFragment<User, UserCell> {
     }
 
 
-    @Override
+    /*@Override
     protected int getFreshLoadView() {
         return R.layout.custom_fresh_load_view;
-    }
+    }*/
 
     @Override
     protected void setUpBottomView(FrameLayout bottomViewContainer) {

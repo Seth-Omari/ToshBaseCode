@@ -156,7 +156,7 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
     }
 
     protected int getFreshLoadViewGravity() {
-        return Gravity.CENTER;
+        return Gravity.TOP | Gravity.CENTER_HORIZONTAL;
     }
 
     /**
@@ -179,7 +179,7 @@ public abstract class ModelListBottomSheetFragment<M, C extends SimpleCell<M, ?>
     }
 
     protected boolean hasCollapsibleTopView() {
-        return true;
+        return false;
     }
 
     @Override

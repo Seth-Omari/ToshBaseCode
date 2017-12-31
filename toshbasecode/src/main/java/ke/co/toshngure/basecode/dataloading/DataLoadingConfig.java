@@ -43,6 +43,16 @@ public class DataLoadingConfig {
         return this;
     }
 
+    public DataLoadingConfig disableConnection(boolean disableConnection) {
+        if (disableConnection) {
+            this.refreshEnabled = false;
+            this.loadingMoreEnabled = false;
+            this.autoRefreshEnabled = false;
+            this.connectionEnabled = false;
+        }
+        return this;
+    }
+
     public boolean isCursorsEnabled() {
         return cursorsEnabled;
     }

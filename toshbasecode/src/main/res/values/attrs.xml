@@ -26,4 +26,7 @@
         <attr name="cropviewMinScale" format="float" />
     </declare-styleable>
 
+    <!-- color for AVLoadingIndicatorView -->
+    <attr name="AVLoadingIndicatorColor" format="reference|color" />
+
 </resources>

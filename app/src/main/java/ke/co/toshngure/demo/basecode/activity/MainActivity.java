@@ -8,7 +8,6 @@
 
 package ke.co.toshngure.demo.basecode.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +15,7 @@ import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ke.co.toshngure.demo.basecode.R;
+import ke.co.toshngure.demo.basecode.fragment.UsersFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -51,6 +51,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.dataLoadingSLIV)
     public void onDataLoadingSLIVClick() {
-        startActivity(new Intent(this,  DataLoadingActivity.class));
+        //startActivity(new Intent(this,  DataLoadingActivity.class));
+        UsersFragment.newInstance().show(getSupportFragmentManager(), "IIIIIIIIIIII");
     }
 }
