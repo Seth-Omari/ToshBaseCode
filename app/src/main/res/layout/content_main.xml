@@ -6,37 +6,61 @@
   ~ Email : anthonyngure25@gmail.com
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="ke.co.toshngure.demo.basecode.activity.MainActivity"
     tools:showIn="@layout/activity_main">
 
 
-    <ke.co.toshngure.basecode.view.BaseSimpleListItemView
-        android:id="@+id/dataLoadingSLIV"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackground"
-        app:sli_Drawable="@drawable/ic_keyboard_black_24dp"
-        app:sli_SubTitle="@string/appbar_scrolling_view_behavior"
-        app:sli_Title="Data Loading" />
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <ke.co.toshngure.basecode.view.BaseSimpleListItemView
+            android:id="@+id/dataLoadingFullFragmentSLIV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            app:sli_Drawable="@drawable/ic_keyboard_black_24dp"
+            app:sli_SubTitle="@string/appbar_scrolling_view_behavior"
+            app:sli_Title="Full Fragment Data Loading" />
+
+        <ke.co.toshngure.basecode.view.BaseSimpleListItemView
+            android:id="@+id/dataLoadingBottomSheetSLIV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            app:sli_Drawable="@drawable/ic_keyboard_black_24dp"
+            app:sli_SubTitle="@string/appbar_scrolling_view_behavior"
+            app:sli_Title="Bottom Sheet Data Loading" />
+
+        <ke.co.toshngure.basecode.view.BaseSimpleListItemView
+            android:id="@+id/dialogSLIV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            app:sli_Drawable="@drawable/ic_keyboard_black_24dp"
+            app:sli_SubTitle="@string/appbar_scrolling_view_behavior"
+            app:sli_Title="Default Base Dialog" />
+
+        <ke.co.toshngure.basecode.view.BaseSimpleListItemView
+            android:id="@+id/customMessageDialogSLIV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            app:sli_Drawable="@drawable/ic_keyboard_black_24dp"
+            app:sli_SubTitle="@string/appbar_scrolling_view_behavior"
+            app:sli_Title="Custom Message Base Dialog" />
 
 
-    <ke.co.toshngure.basecode.view.BaseSimpleListItemView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:sli_Drawable="@drawable/ic_keyboard_black_24dp"
-        app:sli_DrawableCentered="true"
-        app:sli_DrawableTint="@color/colorPrimary"
-        app:sli_Title="@string/app_name"
-        app:sli_TitleColor="@color/colorAccent"
-        app:sli_TitleTopBottomPadding="16"/>
+    </LinearLayout>
 
 
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

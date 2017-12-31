@@ -8,14 +8,16 @@
 
 package ke.co.toshngure.demo.basecode.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ke.co.toshngure.demo.basecode.R;
-import ke.co.toshngure.demo.basecode.fragment.UsersFragment;
+import ke.co.toshngure.demo.basecode.fragment.UsersFragmentBottomSheet;
 
 public class MainActivity extends BaseActivity {
 
@@ -49,9 +51,25 @@ public class MainActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick(R.id.dataLoadingSLIV)
-    public void onDataLoadingSLIVClick() {
-        //startActivity(new Intent(this,  DataLoadingActivity.class));
-        UsersFragment.newInstance().show(getSupportFragmentManager(), "IIIIIIIIIIII");
+    @OnClick(R.id.dataLoadingBottomSheetSLIV)
+    public void onDataLoadingBottomSheetSLIVClick() {
+        UsersFragmentBottomSheet.newInstance().show(getSupportFragmentManager(), "IIIIIIIIIIII");
+    }
+
+    @OnClick(R.id.dataLoadingFullFragmentSLIV)
+    public void onDataLoadingFullFragmentSLIVClick() {
+        startActivity(new Intent(this, DataLoadingActivity.class));
+    }
+
+    @OnClick(R.id.dialogSLIV)
+    public void onDialogSLIVClick() {
+        showProgressDialog();
+        new Handler().postDelayed(this::hideProgressDialog, 2000);
+    }
+
+    @OnClick(R.id.customMessageDialogSLIV)
+    public void onCustomMessageSLIVClick() {
+        showProgressDialog(R.string.appbar_scrolling_view_behavior);
+        new Handler().postDelayed(this::hideProgressDialog, 2000);
     }
 }

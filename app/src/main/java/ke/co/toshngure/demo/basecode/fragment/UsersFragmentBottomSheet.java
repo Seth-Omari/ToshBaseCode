@@ -24,7 +24,7 @@ import com.loopj.android.http.AsyncHttpClient;
 
 import ke.co.toshngure.basecode.dataloading.DataLoadingConfig;
 import ke.co.toshngure.basecode.dataloading.ModelCursor;
-import ke.co.toshngure.basecode.dataloading.ModelListFragment;
+import ke.co.toshngure.basecode.dataloading.ModelListBottomSheetFragment;
 import ke.co.toshngure.basecode.images.BaseNetworkImage;
 import ke.co.toshngure.demo.basecode.R;
 import ke.co.toshngure.demo.basecode.cell.UserCell;
@@ -34,16 +34,16 @@ import ke.co.toshngure.demo.basecode.network.Client;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UsersFragment extends ModelListFragment<User, UserCell> {
+public class UsersFragmentBottomSheet extends ModelListBottomSheetFragment<User, UserCell> {
 
 
-    public UsersFragment() {
+    public UsersFragmentBottomSheet() {
         // Required empty public constructor
     }
 
-    public static UsersFragment newInstance() {
+    public static UsersFragmentBottomSheet newInstance() {
         Bundle args = new Bundle();
-        UsersFragment fragment = new UsersFragment();
+        UsersFragmentBottomSheet fragment = new UsersFragmentBottomSheet();
         fragment.setArguments(args);
         return fragment;
     }
@@ -117,7 +117,7 @@ public class UsersFragment extends ModelListFragment<User, UserCell> {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_change_cursors:
                 ModelCursor modelCursor = new ModelCursor();
                 modelCursor.setAfter(30);
