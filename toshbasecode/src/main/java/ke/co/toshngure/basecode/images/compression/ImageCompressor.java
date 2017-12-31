@@ -23,8 +23,8 @@ import java.io.File;
  * GitHub     : https://github.com/zetbaitsu
  * LinkedIn   : https://id.linkedin.com/in/zetbaitsu
  */
-public class Compressor {
-    private static volatile Compressor INSTANCE;
+public class ImageCompressor {
+    private static volatile ImageCompressor INSTANCE;
     private Context context;
     //max width and height values of the compressed image is taken as 612x816
     private float maxWidth = 612.0f;
@@ -37,16 +37,16 @@ public class Compressor {
     private String fileName;
 
 
-    private Compressor(Context context) {
+    private ImageCompressor(Context context) {
         this.context = context;
         destinationDirectoryPath = context.getCacheDir().getPath() + File.pathSeparator + FileUtil.FILES_PATH;
     }
 
-    public static Compressor getDefault(Context context) {
+    public static ImageCompressor getDefault(Context context) {
         if (INSTANCE == null) {
-            synchronized (Compressor.class) {
+            synchronized (ImageCompressor.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new Compressor(context);
+                    INSTANCE = new ImageCompressor(context);
                 }
             }
         }
@@ -65,54 +65,54 @@ public class Compressor {
 
 
     public static class Builder {
-        private Compressor compressor;
+        private ImageCompressor imageCompressor;
 
         public Builder(Context context) {
-            compressor = new Compressor(context);
+            imageCompressor = new ImageCompressor(context);
         }
 
         public Builder setMaxWidth(float maxWidth) {
-            compressor.maxWidth = maxWidth;
+            imageCompressor.maxWidth = maxWidth;
             return this;
         }
 
         public Builder setMaxHeight(float maxHeight) {
-            compressor.maxHeight = maxHeight;
+            imageCompressor.maxHeight = maxHeight;
             return this;
         }
 
         public Builder setCompressFormat(Bitmap.CompressFormat compressFormat) {
-            compressor.compressFormat = compressFormat;
+            imageCompressor.compressFormat = compressFormat;
             return this;
         }
 
         public Builder setBitmapConfig(Bitmap.Config bitmapConfig) {
-            compressor.bitmapConfig = bitmapConfig;
+            imageCompressor.bitmapConfig = bitmapConfig;
             return this;
         }
 
         public Builder setQuality(int quality) {
-            compressor.quality = quality;
+            imageCompressor.quality = quality;
             return this;
         }
 
         public Builder setDestinationDirectoryPath(String destinationDirectoryPath) {
-            compressor.destinationDirectoryPath = destinationDirectoryPath;
+            imageCompressor.destinationDirectoryPath = destinationDirectoryPath;
             return this;
         }
 
         public Builder setFileNamePrefix(String prefix) {
-            compressor.fileNamePrefix = prefix;
+            imageCompressor.fileNamePrefix = prefix;
             return this;
         }
 
         public Builder setFileName(String fileName) {
-            compressor.fileName = fileName;
+            imageCompressor.fileName = fileName;
             return this;
         }
 
-        public Compressor build() {
-            return compressor;
+        public ImageCompressor build() {
+            return imageCompressor;
         }
     }
 }

@@ -31,7 +31,7 @@ import java.io.OutputStream;
  * LinkedIn   : https://id.linkedin.com/in/zetbaitsu
  */
 public class FileUtil {
-    static final String FILES_PATH = "Compressor";
+    static final String FILES_PATH = "ImageCompressor";
     private static final int EOF = -1;
     private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
 
