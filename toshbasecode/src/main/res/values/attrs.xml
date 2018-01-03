@@ -7,9 +7,9 @@
   -->
 
 <resources>
-    <declare-styleable name="BaseNetworkImage">
-        <attr name="circled" format="boolean" />
-        <attr name="circledImageSize" format="dimension" />
+    <declare-styleable name="NetworkImage">
+        <attr name="niCircled" format="boolean" />
+        <attr name="niSrc" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="ChipCloud">

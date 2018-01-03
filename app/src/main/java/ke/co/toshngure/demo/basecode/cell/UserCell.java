@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -20,7 +20,7 @@ import com.jaychang.srv.SimpleViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import ke.co.toshngure.basecode.images.BaseNetworkImage;
+import ke.co.toshngure.basecode.images.NetworkImage;
 import ke.co.toshngure.demo.basecode.R;
 import ke.co.toshngure.demo.basecode.model.User;
 
@@ -55,7 +55,7 @@ public class UserCell extends SimpleCell<User, UserCell.UserViewHolder> {
     public class UserViewHolder extends SimpleViewHolder {
 
         @BindView(R.id.avatarNI)
-        BaseNetworkImage avatarNI;
+        NetworkImage avatarNI;
         @BindView(R.id.nameTV)
         TextView nameTV;
         @BindView(R.id.emailTV)

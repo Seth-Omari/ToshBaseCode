@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -23,8 +23,8 @@ import java.util.List;
  * Created by Tosh on 08.12.16.
  */
 
-public class BaseCollageView extends LinearLayout {
-    private static final String TAG = BaseCollageView.class.getSimpleName();
+public class CollageView extends LinearLayout {
+    private static final String TAG = CollageView.class.getSimpleName();
     private List<String> paths;
     private boolean useFirstAsHeader = false;
 
@@ -37,15 +37,15 @@ public class BaseCollageView extends LinearLayout {
     private OnPhotoClickListener onPhotoClickListener;
     private boolean fromNetwork;
 
-    public BaseCollageView(Context context) {
+    public CollageView(Context context) {
         super(context);
     }
 
-    public BaseCollageView(Context context, AttributeSet attrs) {
+    public CollageView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public BaseCollageView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CollageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

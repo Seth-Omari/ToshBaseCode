@@ -89,12 +89,18 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick(R.id.networkFilterableListViewSLIV)
-    public void networkFilterableListViewSLIVClick() {
+    public void onNetworkFilterableListViewSLIVClick() {
         FilterableListViewActivity.start(this, true);
     }
 
     @OnClick(R.id.localFilterableListViewSLIV)
-    public void localFilterableListViewSLIVClick() {
+    public void onLocalFilterableListViewSLIVClick() {
         FilterableListViewActivity.start(this, false);
+    }
+
+
+    @OnClick(R.id.networkImageSLIV)
+    public void onNetworkImageSLIV() {
+        NetworkImageActivity.start(this);
     }
 }

@@ -34,6 +34,11 @@
             app:sli_Title="Bottom Sheet Data Loading" />
 
         <ke.co.toshngure.basecode.view.SimpleListItemView
+            android:id="@+id/networkImageSLIV"
+            style="@style/TestSimpleListItemView"
+            app:sli_Title="Network Image" />
+
+        <ke.co.toshngure.basecode.view.SimpleListItemView
             android:id="@+id/dialogSLIV"
             style="@style/TestSimpleListItemView"
             app:sli_Title="Default Base Dialog" />

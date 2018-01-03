@@ -38,4 +38,7 @@
     <string name="user_local_source">User Local Source</string>
     <string name="use_network_source">Use Network Source</string>
     <string name="title_activity_filterable_list_view">Filterable ListView</string>
+    <string name="title_activity_network_image">Network Image</string>
+    <string name="show_progress_bar">Show Progress Bar</string>
+    <string name="status">Status:</string>
 </resources>

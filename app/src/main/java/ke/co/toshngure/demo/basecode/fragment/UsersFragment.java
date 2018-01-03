@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -25,7 +25,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import ke.co.toshngure.basecode.dataloading.DataLoadingConfig;
 import ke.co.toshngure.basecode.dataloading.ModelCursor;
 import ke.co.toshngure.basecode.dataloading.ModelListFragment;
-import ke.co.toshngure.basecode.images.BaseNetworkImage;
+import ke.co.toshngure.basecode.images.NetworkImage;
 import ke.co.toshngure.demo.basecode.R;
 import ke.co.toshngure.demo.basecode.cell.UserCell;
 import ke.co.toshngure.demo.basecode.model.User;
@@ -89,7 +89,7 @@ public class UsersFragment extends ModelListFragment<User, UserCell> {
     protected void setUpTopView(FrameLayout topViewContainer) {
         super.setUpTopView(topViewContainer);
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_users_top_view, null);
-        BaseNetworkImage topViewNI = view.findViewById(R.id.topViewNI);
+        NetworkImage topViewNI = view.findViewById(R.id.topViewNI);
         topViewContainer.addView(view);
         topViewNI.loadImageFromNetwork("https://lorempixel.com/400/400/cats/?33483");
     }

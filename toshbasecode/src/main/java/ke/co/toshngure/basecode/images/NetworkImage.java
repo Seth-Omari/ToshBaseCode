@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -13,11 +13,11 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewStub;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -41,60 +41,61 @@ import ke.co.toshngure.basecode.view.CircleImageView;
  *
  */
 
-public class BaseNetworkImage extends FrameLayout {
+public class NetworkImage extends FrameLayout {
 
-    private static final String TAG = BaseNetworkImage.class.getSimpleName();
+    private static final String TAG = NetworkImage.class.getSimpleName();
 
     protected ImageView mImageView;
     protected ImageView mErrorButton;
     protected ProgressBar mProgressBar;
     private LoadingCallBack loadingCallBack;
 
-    public BaseNetworkImage(Context context) {
+    public NetworkImage(Context context) {
         this(context, null);
     }
 
-    public BaseNetworkImage(Context context, AttributeSet attrs) {
+    public NetworkImage(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public BaseNetworkImage(Context context, AttributeSet attrs, int defStyleAttr) {
+    public NetworkImage(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        LayoutInflater.from(context).inflate(R.layout.layout_network_image, this, true);
+        LayoutInflater.from(context).inflate(R.layout.view_network_image, this, true);
+
         mErrorButton = findViewById(R.id.errorButton);
         mProgressBar = findViewById(R.id.progressBar);
-        ViewStub viewStub = findViewById(R.id.imageVS);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.BaseNetworkImage);
-        boolean circled = typedArray.getBoolean(R.styleable.BaseNetworkImage_circled, false);
+        FrameLayout imageFL = findViewById(R.id.imageFL);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NetworkImage);
+
+        boolean circled = typedArray.getBoolean(R.styleable.NetworkImage_niCircled, false);
+        FrameLayout.LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
         if (circled) {
-            viewStub.setLayoutResource(R.layout.layout_circle_imageview);
+            mImageView = new CircleImageView(context);
         } else {
-            viewStub.setLayoutResource(R.layout.layout_normal_imageview);
+            mImageView = new ImageView(context);
+            mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
-        mImageView = (ImageView) viewStub.inflate();
+        imageFL.addView(mImageView, layoutParams);
 
-        if (circled) {
-            int imageSize = (int) typedArray.getDimension(R.styleable.BaseNetworkImage_circledImageSize, 48);
-            mImageView.getLayoutParams().width = imageSize;
-            mImageView.getLayoutParams().height = imageSize;
-        }
+        /*Image*/
+        Drawable drawable = typedArray.getDrawable(R.styleable.NetworkImage_niSrc);
+        setImageDrawable(drawable);
         typedArray.recycle();
 
     }
 
     public void loadImageFromNetwork(final String networkPath) {
-
-        mErrorButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "Retrying to loadFromNetwork image");
-                mProgressBar.setVisibility(VISIBLE);
-                mErrorButton.setVisibility(GONE);
-                loadImageFromNetwork(networkPath);
-            }
+        mProgressBar.setVisibility(VISIBLE);
+        mErrorButton.setOnClickListener(v -> {
+            Log.d(TAG, "Retrying to loadFromNetwork image");
+            mProgressBar.setVisibility(VISIBLE);
+            mErrorButton.setVisibility(GONE);
+            loadImageFromNetwork(networkPath);
         });
+
         Glide.with(getContext().getApplicationContext())
                 .load(networkPath)
                 .dontAnimate()
@@ -104,21 +105,8 @@ public class BaseNetworkImage extends FrameLayout {
                 .into(mImageView);
     }
 
-    public BaseNetworkImage setImageSize(int imageSize) {
-        mImageView.getLayoutParams().width = imageSize;
-        mImageView.getLayoutParams().height = imageSize;
-        return this;
-    }
-
-    public void setProgressBarVisible(boolean visible) {
-        if (visible) {
-            mProgressBar.setVisibility(VISIBLE);
-        } else {
-            mProgressBar.setVisibility(GONE);
-        }
-    }
-
     public void loadImageFromMediaStore(String path) {
+        mProgressBar.setVisibility(VISIBLE);
         File file = new File(path);
         Glide.with(getContext().getApplicationContext())
                 .loadFromMediaStore(Uri.fromFile(file))
@@ -130,6 +118,7 @@ public class BaseNetworkImage extends FrameLayout {
 
 
     public void loadImageFromMediaStore(Uri uri) {
+        mProgressBar.setVisibility(VISIBLE);
         Glide.with(getContext().getApplicationContext())
                 .loadFromMediaStore(uri)
                 .dontAnimate()
@@ -138,7 +127,7 @@ public class BaseNetworkImage extends FrameLayout {
                 .into(mImageView);
     }
 
-    public BaseNetworkImage setLoadingCallBack(LoadingCallBack loadingCallBack) {
+    public NetworkImage setLoadingCallBack(LoadingCallBack loadingCallBack) {
         this.loadingCallBack = loadingCallBack;
         return this;
     }
@@ -152,9 +141,7 @@ public class BaseNetworkImage extends FrameLayout {
 
     public void setImageResource(@DrawableRes int resId) {
         mImageView.setImageResource(resId);
-        mImageView.setVisibility(VISIBLE);
-        mProgressBar.setVisibility(GONE);
-        mErrorButton.setVisibility(GONE);
+        setImageDrawable(ContextCompat.getDrawable(getContext(), resId));
     }
 
 
@@ -162,7 +149,6 @@ public class BaseNetworkImage extends FrameLayout {
     public interface LoadingCallBack {
         void onSuccess(GlideDrawable drawable);
     }
-
 
 
     /**

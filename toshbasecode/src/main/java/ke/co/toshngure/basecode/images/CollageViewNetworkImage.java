@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -17,11 +17,11 @@ import android.content.Context;
  */
 
 @SuppressLint("ViewConstructor")
-class CollageViewNetworkImage extends BaseNetworkImage {
+class CollageViewNetworkImage extends NetworkImage {
 
-    private BaseCollageView.ImageForm imageForm = BaseCollageView.ImageForm.IMAGE_FORM_SQUARE;
+    private CollageView.ImageForm imageForm = CollageView.ImageForm.IMAGE_FORM_SQUARE;
 
-    public CollageViewNetworkImage(Context context, BaseCollageView.ImageForm imageForm) {
+    public CollageViewNetworkImage(Context context, CollageView.ImageForm imageForm) {
         super(context);
         this.imageForm = imageForm;
     }

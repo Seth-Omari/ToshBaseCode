@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -15,14 +15,13 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <ke.co.toshngure.basecode.images.BaseNetworkImage
+    <ke.co.toshngure.basecode.images.NetworkImage
         android:id="@+id/avatarNI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
-        app:circled="true"
-        app:circledImageSize="36dp"/>
+        app:niCircled="true" />
 
     <LinearLayout
         android:layout_width="match_parent"

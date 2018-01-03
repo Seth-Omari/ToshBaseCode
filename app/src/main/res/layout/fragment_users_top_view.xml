@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -12,7 +12,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ke.co.toshngure.basecode.images.BaseNetworkImage
+    <ke.co.toshngure.basecode.images.NetworkImage
         android:id="@+id/topViewNI"
         android:layout_width="match_parent"
         android:layout_height="100dp"/>

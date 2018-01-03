@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -11,13 +11,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ViewStub
-        android:id="@+id/imageVS"
+    <FrameLayout
+        android:id="@+id/imageFL"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:inflatedId="@id/imageVS"/>
+        android:layout_centerInParent="true" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -32,7 +30,6 @@
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_refresh_black_24dp"
-        android:tint="?colorAccent"
-        android:visibility="gone" />
+        android:tint="?colorAccent" />
 
 </RelativeLayout>
