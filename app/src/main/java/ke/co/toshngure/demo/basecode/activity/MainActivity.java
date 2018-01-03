@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -59,6 +59,16 @@ public class MainActivity extends BaseActivity {
     @OnClick(R.id.dataLoadingFullFragmentSLIV)
     public void onDataLoadingFullFragmentSLIVClick() {
         startActivity(new Intent(this, DataLoadingActivity.class));
+    }
+
+    @OnClick(R.id.drawableUtilsSLIV)
+    public void onDrawableUtilsSLIVClick() {
+        startActivity(new Intent(this, DrawableUtilsActivity.class));
+    }
+
+    @OnClick(R.id.chipViewsSLIV)
+    public void onChipViewsSLIVSLIVClick() {
+        startActivity(new Intent(this, ChipsActivity.class));
     }
 
     @OnClick(R.id.dialogSLIV)

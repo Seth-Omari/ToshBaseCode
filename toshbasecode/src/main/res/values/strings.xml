@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -44,6 +44,7 @@
     <string name="title_activity_photo_edit">Photo Edit</string>
     <string name="message_loading_more">Loading more…</string>
     <string name="message_more_data_request_exhausted">Nothing more, pull down to refresh :(</string>
+    <string name="no_chips">No chips!</string>
 
 
 </resources>

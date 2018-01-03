@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -10,6 +10,45 @@
     <declare-styleable name="BaseNetworkImage">
         <attr name="circled" format="boolean" />
         <attr name="circledImageSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ChipCloud">
+
+        <attr name="chipCloudChipMargins" format="integer|reference" />
+        <attr name="chipCloudHorizontal" format="boolean|reference" />
+        <attr name="chipCloudChipItems" format="reference" />
+
+        <!--Selection-->
+        <attr name="chipCloudSelectMode">
+            <enum name="none" value="1" />
+            <enum name="single" value="2" />
+            <enum name="multiple" value="3" />
+        </attr>
+        <attr name="chipCloudSelectedChip" format="integer" />
+
+
+        <!--Selection-->
+        <attr name="chipCloudSelected" format="integer" />
+
+        <!--Text-->
+        <attr name="chipCloudText" format="string|reference" />
+        <attr name="chipCloudTextSize" format="float|reference" />
+        <attr name="chipCloudTextColor" format="color|reference" />
+        <attr name="chipCloudTextColorSelected" format="color|reference" />
+
+        <!--Border-->
+        <attr name="chipCloudBorderWidth" format="integer|reference" />
+        <attr name="chipCloudBorderWidthSelected" format="integer|reference" />
+        <attr name="chipCloudBorderColor" format="color|reference" />
+        <attr name="chipCloudBorderColorSelected" format="color|reference" />
+
+        <!--Background-->
+        <attr name="chipCloudBackgroundColor" format="color|reference" />
+        <attr name="chipCloudBackgroundColorSelected" format="color|reference" />
+
+        <!--Radius-->
+        <attr name="chipCloudCornerRadius" format="integer|reference" />
+
     </declare-styleable>
 
 

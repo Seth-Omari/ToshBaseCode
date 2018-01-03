@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -8,7 +8,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ke.co.toshngure.demo.basecode">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -40,6 +40,24 @@
         <activity
             android:name=".activity.DataLoadingActivity"
             android:label="@string/title_activity_data_loading"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ke.co.toshngure.demo.basecode.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.DrawableUtilsActivity"
+            android:label="@string/title_activity_drawable_utils"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ke.co.toshngure.demo.basecode.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.ChipsActivity"
+            android:label="@string/title_activity_chips"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

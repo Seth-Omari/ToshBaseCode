@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018.
+  ~
+  ~ Anthony Ngure
+  ~
+  ~ Email : anthonyngure25@gmail.com
+  -->
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ke.co.toshngure.demo.basecode.activity.ChipsActivity"
+    tools:showIn="@layout/activity_chips">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="@string/chip_view" />
+
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            app:alignContent="space_around"
+            app:alignItems="center"
+            app:dividerDrawable="@drawable/divider"
+            app:flexWrap="wrap"
+            app:justifyContent="flex_start"
+            app:showDivider="middle">
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudText="Default" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudSelected="0"
+                app:chipCloudText="Default Selected" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudBackgroundColorSelected="@android:color/holo_orange_dark"
+                app:chipCloudSelected="0"
+                app:chipCloudText="Selected Color" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudBorderWidthSelected="1"
+                app:chipCloudSelected="0"
+                app:chipCloudText="Default Selected Border" />
+
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudBackgroundColor="@android:color/holo_purple"
+                app:chipCloudText="Default Colored" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudText="Text Size"
+                app:chipCloudTextSize="24" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudText="Text Color"
+                app:chipCloudTextColor="@android:color/holo_red_dark" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudBorderWidth="1"
+                app:chipCloudText="Default Border" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudBorderColor="@android:color/holo_red_dark"
+                app:chipCloudBorderWidth="1"
+                app:chipCloudText="Default Border Colored" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudText="Default Selectable"
+                app:chipCloudTextSize="28" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudBackgroundColorSelected="@android:color/holo_green_dark"
+                app:chipCloudText="Color Selected"
+                app:chipCloudTextSize="28" />
+
+            <ke.co.toshngure.basecode.view.chips.ChipCloud
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipCloudText="Text Color Selected"
+                app:chipCloudTextColorSelected="@android:color/holo_purple"
+                app:chipCloudTextSize="28" />
+
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <include layout="@layout/horizontal_separator" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/list_row_padding"
+            android:text="@string/horizontal" />
+
+        <ke.co.toshngure.basecode.view.chips.ChipCloud
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:chipCloudChipItems="@array/counties_short"
+            app:chipCloudHorizontal="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/list_row_padding"
+            android:text="@string/none_selectable" />
+
+        <ke.co.toshngure.basecode.view.chips.ChipCloud
+            android:id="@+id/testHorizontalCVL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:chipCloudChipItems="@array/counties_short" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/list_row_padding"
+            android:text="@string/single_selectable" />
+
+        <ke.co.toshngure.basecode.view.chips.ChipCloud
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:chipCloudChipItems="@array/counties_short"
+            app:chipCloudSelectMode="single"
+            app:chipCloudTextSize="24" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/list_row_padding"
+            android:text="@string/empty" />
+
+        <ke.co.toshngure.basecode.view.chips.ChipCloud
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/list_row_padding"
+            android:text="@string/multiple_selectable" />
+
+        <ke.co.toshngure.basecode.view.chips.ChipCloud
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:chipCloudChipItems="@array/counties_short"
+            app:chipCloudSelectMode="multiple" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -20,4 +20,18 @@
     <string name="title_activity_data_loading_test">Data Loading Test</string>
     <string name="title_activity_basic">BasicActivity</string>
     <string name="title_activity_data_loading">Data Loading Test Activity</string>
+    <string name="title_activity_drawable_utils">DrawableUtilsActivity</string>
+    <string name="change_color">Change Color</string>
+    <string name="title_activity_chips">ChipsActivity</string>
+    <string name="toggle">Toggle</string>
+    <string name="border">Border color</string>
+    <string name="text_color">Text color</string>
+    <string name="color_">Color</string>
+    <string name="chip_view">Chip View</string>
+    <string name="chip_view_layout">Chip View Layout</string>
+    <string name="single_selectable">Single Selectable</string>
+    <string name="none_selectable">None Selectable</string>
+    <string name="multiple_selectable">Multiple Selectable</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="empty">Empty</string>
 </resources>
