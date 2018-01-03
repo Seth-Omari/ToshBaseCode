@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -7,12 +7,12 @@
   -->
 
 <resources>
-    <declare-styleable name="BaseDashboardItemView">
-        <attr name="itemTitle" format="string" />
-        <attr name="itemTitleColor" format="color" />
-        <attr name="itemIcon" format="reference" />
-        <attr name="itemIconTint" format="color" />
-        <attr name="itemIconSize" format="dimension" />
-        <attr name="itemIconBackground" format="color" />
+    <declare-styleable name="DashboardItemView">
+        <attr name="div_Title" format="string" />
+        <attr name="div_TitleColor" format="color" />
+        <attr name="div_Icon" format="reference" />
+        <attr name="div_IconTint" format="color" />
+        <attr name="div_IconSize" format="dimension" />
+        <attr name="div_IconBackground" format="color" />
     </declare-styleable>
 </resources>

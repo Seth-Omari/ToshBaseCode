@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -25,5 +25,13 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TestSimpleListItemView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="sli_Drawable">@drawable/ic_android_black_24dp</item>
+        <item name="sli_SubTitle">@string/bottom_sheet_behavior</item>
+    </style>
 
 </resources>

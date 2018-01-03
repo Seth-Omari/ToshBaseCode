@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2017.
+  ~ Copyright (c) 2018.
   ~
   ~ Anthony Ngure
   ~
@@ -7,10 +7,10 @@
   -->
 
 <resources>
-    <declare-styleable name="BaseSimpleListItemView">
+    <declare-styleable name="SimpleListItemView">
         <attr name="sli_Title" format="string" />
         <attr name="sli_TitleColor" format="color" />
-        <attr name="sli_TitleTopBottomPadding" format="integer" />
+        <attr name="sli_TitleTopBottomPadding" format="dimension" />
         <attr name="sli_SubTitle" format="string" />
         <attr name="sli_SubTitleColor" format="color" />
         <attr name="sli_Drawable" format="reference" />

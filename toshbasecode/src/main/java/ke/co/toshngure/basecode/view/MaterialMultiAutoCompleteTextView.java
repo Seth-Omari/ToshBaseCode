@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -15,27 +15,28 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.AppCompatCheckedTextView;
+import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
 import android.util.AttributeSet;
 
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.utils.VectorUtils;
 
 
-public class FineCheckedTextView extends AppCompatCheckedTextView {
+public class MaterialMultiAutoCompleteTextView extends AppCompatMultiAutoCompleteTextView {
     private ColorStateList mTint;
-    public FineCheckedTextView(Context context) {
-        this(context, null);
+
+    public MaterialMultiAutoCompleteTextView(Context context) {
+        super(context, null);
     }
 
-    public FineCheckedTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.checkedTextViewStyle);
+    public MaterialMultiAutoCompleteTextView(Context context, AttributeSet attrs) {
+        this(context, attrs, android.support.v7.appcompat.R.attr.autoCompleteTextViewStyle);
     }
 
-    public FineCheckedTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MaterialMultiAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FineView, defStyleAttr, 0);
-        mTint = a.getColorStateList(R.styleable.FineView_tint);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialView, defStyleAttr, 0);
+        mTint = a.getColorStateList(R.styleable.MaterialView_tint);
         a.recycle();
     }
 

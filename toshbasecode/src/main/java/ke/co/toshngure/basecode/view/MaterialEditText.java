@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -15,26 +15,29 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.AppCompatAutoCompleteTextView;
+import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.utils.VectorUtils;
 
-public class FineAutoCompleteTextView extends AppCompatAutoCompleteTextView {
+
+public class MaterialEditText extends AppCompatEditText {
+    private static final int DEFAULT_EMOJI_SIZE = 28;
     private ColorStateList mTint;
-    public FineAutoCompleteTextView(Context context) {
+
+    public MaterialEditText(Context context) {
         this(context, null);
     }
 
-    public FineAutoCompleteTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.autoCompleteTextViewStyle);
+    public MaterialEditText(Context context, AttributeSet attrs) {
+        this(context, attrs, android.support.v7.appcompat.R.attr.editTextStyle);
     }
 
-    public FineAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MaterialEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FineView, defStyleAttr, 0);
-        mTint = a.getColorStateList(R.styleable.FineView_tint);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialView, defStyleAttr, 0);
+        mTint = a.getColorStateList(R.styleable.MaterialView_tint);
         a.recycle();
     }
 
@@ -135,5 +138,10 @@ public class FineAutoCompleteTextView extends AppCompatAutoCompleteTextView {
                 VectorUtils.tintDrawable(context,compoundDrawable,mTint.getColorForState(getDrawableState(), 0));
             else VectorUtils.tintDrawable(compoundDrawable,mTint);
         }
+    }
+
+    @Override
+    protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
+        //EmojiconHandler.addEmojis(getContext(), getText(), BaseBaseUtils.dpToPx(DEFAULT_EMOJI_SIZE));
     }
 }

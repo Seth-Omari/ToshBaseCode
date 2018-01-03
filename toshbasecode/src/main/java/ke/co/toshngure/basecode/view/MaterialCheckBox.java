@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -15,27 +15,27 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
 
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.utils.VectorUtils;
 
-
-public class FineMultiAutoCompleteTextView extends AppCompatMultiAutoCompleteTextView {
+public class MaterialCheckBox extends AppCompatCheckBox {
     private ColorStateList mTint;
-    public FineMultiAutoCompleteTextView(Context context) {
+
+    public MaterialCheckBox(Context context) {
         super(context, null);
     }
 
-    public FineMultiAutoCompleteTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.autoCompleteTextViewStyle);
+    public MaterialCheckBox(Context context, AttributeSet attrs) {
+        this(context, attrs, android.support.v7.appcompat.R.attr.checkboxStyle);
     }
 
-    public FineMultiAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MaterialCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FineView, defStyleAttr, 0);
-        mTint = a.getColorStateList(R.styleable.FineView_tint);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialView, defStyleAttr, 0);
+        mTint = a.getColorStateList(R.styleable.MaterialView_tint);
         a.recycle();
     }
 

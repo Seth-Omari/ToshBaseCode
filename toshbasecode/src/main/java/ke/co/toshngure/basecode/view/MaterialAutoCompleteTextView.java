@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -15,31 +15,27 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.AppCompatRadioButton;
+import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.util.AttributeSet;
 
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.utils.VectorUtils;
 
-
-/**
- * Created by admin1 on 7/11/16.
- */
-
-public class FineRadioButton extends AppCompatRadioButton {
+public class MaterialAutoCompleteTextView extends AppCompatAutoCompleteTextView {
     private ColorStateList mTint;
-    public FineRadioButton(Context context) {
-        super(context, null);
+
+    public MaterialAutoCompleteTextView(Context context) {
+        this(context, null);
     }
 
-    public FineRadioButton(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.radioButtonStyle);
+    public MaterialAutoCompleteTextView(Context context, AttributeSet attrs) {
+        this(context, attrs, android.support.v7.appcompat.R.attr.autoCompleteTextViewStyle);
     }
 
-    public FineRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MaterialAutoCompleteTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FineView, defStyleAttr, 0);
-        mTint = a.getColorStateList(R.styleable.FineView_tint);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialView, defStyleAttr, 0);
+        mTint = a.getColorStateList(R.styleable.MaterialView_tint);
         a.recycle();
     }
 

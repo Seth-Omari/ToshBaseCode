@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -15,26 +15,27 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.SwitchCompat;
 import android.util.AttributeSet;
 
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.utils.VectorUtils;
 
-public class FineCheckBox extends AppCompatCheckBox {
+public class MaterialSwitchCompat extends SwitchCompat {
     private ColorStateList mTint;
-    public FineCheckBox(Context context) {
+
+    public MaterialSwitchCompat(Context context) {
         super(context, null);
     }
 
-    public FineCheckBox(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.checkboxStyle);
+    public MaterialSwitchCompat(Context context, AttributeSet attrs) {
+        this(context, attrs, android.support.v7.appcompat.R.attr.switchStyle);
     }
 
-    public FineCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MaterialSwitchCompat(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FineView, defStyleAttr, 0);
-        mTint = a.getColorStateList(R.styleable.FineView_tint);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialView, defStyleAttr, 0);
+        mTint = a.getColorStateList(R.styleable.MaterialView_tint);
         a.recycle();
     }
 

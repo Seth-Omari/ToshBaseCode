@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -32,44 +32,44 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
  * Email : anthonyngure25@gmail.com.
  *
  */
-public class BaseDashboardItemView extends FrameLayout {
+public class DashboardItemView extends FrameLayout {
 
     private static final int DEFAULT_ICON_SIZE = 64;
     private TextView mTitleTV;
     private ImageView mIconIV;
 
-    public BaseDashboardItemView(Context context, AttributeSet attrs) {
+    public DashboardItemView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
 
-    public BaseDashboardItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DashboardItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     private void init(AttributeSet attrs) {
 
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.BaseDashboardItemView);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.DashboardItemView);
 
         View mContentView = LayoutInflater.from(getContext()).inflate(R.layout.view_dashboard_item, this, true);
 
         mTitleTV =  mContentView.findViewById(R.id.titleTV);
         mIconIV =  mContentView.findViewById(R.id.iconIV);
 
-        setItemTitle(typedArray.getString(R.styleable.BaseDashboardItemView_itemTitle));
-        setItemIcon(typedArray.getDrawable(R.styleable.BaseDashboardItemView_itemIcon));
+        setItemTitle(typedArray.getString(R.styleable.DashboardItemView_div_Title));
+        setItemIcon(typedArray.getDrawable(R.styleable.DashboardItemView_div_Icon));
 
-        int titleColor = typedArray.getColor(R.styleable.BaseDashboardItemView_itemTitleColor, Color.WHITE);
+        int titleColor = typedArray.getColor(R.styleable.DashboardItemView_div_TitleColor, Color.WHITE);
         mTitleTV.setTextColor(titleColor);
 
-        int iconTint = typedArray.getColor(R.styleable.BaseDashboardItemView_itemIconTint, Color.WHITE);
+        int iconTint = typedArray.getColor(R.styleable.DashboardItemView_div_IconTint, Color.WHITE);
         mIconIV.setColorFilter(iconTint);
 
-        int iconBackground = typedArray.getColor(R.styleable.BaseDashboardItemView_itemIconBackground,
+        int iconBackground = typedArray.getColor(R.styleable.DashboardItemView_div_IconBackground,
                 BaseUtils.getColorAttr(getContext(), R.attr.colorPrimaryDark));
 
-        int itemIconSize = typedArray.getDimensionPixelSize(R.styleable.BaseDashboardItemView_itemIconSize, DEFAULT_ICON_SIZE);
+        int itemIconSize = typedArray.getDimensionPixelSize(R.styleable.DashboardItemView_div_IconSize, DEFAULT_ICON_SIZE);
 
         ShapeDrawable shapeDrawable = new ShapeDrawable(new OvalShape());
         shapeDrawable.setIntrinsicHeight(itemIconSize);
@@ -108,8 +108,8 @@ public class BaseDashboardItemView extends FrameLayout {
 
     public void setBadge(int count){
 
-        BaseBadgeView badge = new BaseBadgeView(getContext(), mIconIV);
-        badge.setBadgePosition(BaseBadgeView.POSITION_TOP_RIGHT);
+        BadgeView badge = new BadgeView(getContext(), mIconIV);
+        badge.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
         badge.setBadgeBackgroundColor(Color.RED);
         badge.setTextColor(Color.WHITE);
         if (count == 0){

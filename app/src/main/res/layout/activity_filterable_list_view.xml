@@ -10,11 +10,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ke.co.toshngure.demo.basecode.activity.ChipsActivity">
+    tools:context="ke.co.toshngure.demo.basecode.activity.FilterableListViewActivity">
 
     <include layout="@layout/layout_appbar" />
 
-    <include layout="@layout/content_chips" />
+    <include layout="@layout/content_filterable_list_view" />
 
 
 </android.support.design.widget.CoordinatorLayout>

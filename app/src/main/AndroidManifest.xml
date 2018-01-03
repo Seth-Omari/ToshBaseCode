@@ -56,8 +56,17 @@
                 android:value="ke.co.toshngure.demo.basecode.activity.MainActivity" />
         </activity>
         <activity
-            android:name=".activity.ChipsActivity"
-            android:label="@string/title_activity_chips"
+            android:name=".activity.AutoCompleteActivity"
+            android:label="@string/title_activity_auto_complete"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ke.co.toshngure.demo.basecode.activity.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.FilterableListViewActivity"
+            android:label="@string/title_activity_filterable_list_view"
             android:parentActivityName=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

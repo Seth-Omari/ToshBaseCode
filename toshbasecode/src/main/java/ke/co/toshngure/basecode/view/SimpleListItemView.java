@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -30,62 +30,62 @@ import ke.co.toshngure.basecode.utils.BaseUtils;
  * Created by Anthony Ngure on 7/25/2016.
  * Email : anthonyngure25@gmail.com.
  */
-public class BaseSimpleListItemView extends FrameLayout {
+public class SimpleListItemView extends FrameLayout {
 
     private TextView mTitleTV;
     private TextView mSubTitleTV;
     private ImageView mDrawableIV;
 
-    public BaseSimpleListItemView(@NonNull Context context) {
+    public SimpleListItemView(@NonNull Context context) {
         this(context, null);
     }
 
-    public BaseSimpleListItemView(Context context, AttributeSet attrs) {
+    public SimpleListItemView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
 
-    public BaseSimpleListItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SimpleListItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     private void init(AttributeSet attrs) {
 
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.BaseSimpleListItemView);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.SimpleListItemView);
         LayoutInflater.from(getContext()).inflate(R.layout.view_simple_list_item, this, true);
 
         mTitleTV = findViewById(R.id.titleTV);
         mSubTitleTV = findViewById(R.id.subTitleTV);
         mDrawableIV = findViewById(R.id.drawableIV);
 
-        setTitle(typedArray.getString(R.styleable.BaseSimpleListItemView_sli_Title));
-        int titleColor = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_TitleColor, Color.BLACK);
+        setTitle(typedArray.getString(R.styleable.SimpleListItemView_sli_Title));
+        int titleColor = typedArray.getColor(R.styleable.SimpleListItemView_sli_TitleColor, Color.BLACK);
         mTitleTV.setTextColor(titleColor);
 
-        int titleTopBottomPadding = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_TitleTopBottomPadding, 0);
+        int titleTopBottomPadding = typedArray.getDimensionPixelSize(R.styleable.SimpleListItemView_sli_TitleTopBottomPadding, 0);
         if (titleTopBottomPadding != 0){
             int padding = BaseUtils.dpToPx(titleTopBottomPadding);
             mTitleTV.setPadding(mTitleTV.getPaddingLeft(), padding, mTitleTV.getPaddingRight(), padding);
         }
 
-        setSubTitle(typedArray.getString(R.styleable.BaseSimpleListItemView_sli_SubTitle));
-        int subTitleColor = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_SubTitleColor, Color.DKGRAY);
+        setSubTitle(typedArray.getString(R.styleable.SimpleListItemView_sli_SubTitle));
+        int subTitleColor = typedArray.getColor(R.styleable.SimpleListItemView_sli_SubTitleColor, Color.DKGRAY);
         mSubTitleTV.setTextColor(subTitleColor);
 
-        setItemDrawable(typedArray.getDrawable(R.styleable.BaseSimpleListItemView_sli_Drawable));
-        int drawableTint = typedArray.getColor(R.styleable.BaseSimpleListItemView_sli_DrawableTint,
+        setItemDrawable(typedArray.getDrawable(R.styleable.SimpleListItemView_sli_Drawable));
+        int drawableTint = typedArray.getColor(R.styleable.SimpleListItemView_sli_DrawableTint,
                 BaseUtils.getColorAttr(getContext(), R.attr.colorPrimary));
         mDrawableIV.setColorFilter(drawableTint);
 
-        boolean drawableCentered = typedArray.getBoolean(R.styleable.BaseSimpleListItemView_sli_DrawableCentered, false);
+        boolean drawableCentered = typedArray.getBoolean(R.styleable.SimpleListItemView_sli_DrawableCentered, false);
         if (drawableCentered){
             LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mDrawableIV.getLayoutParams();
             params.gravity = Gravity.CENTER;
         }
 
 
-        boolean showDivider = typedArray.getBoolean(R.styleable.BaseSimpleListItemView_sli_DividerVisible, true);
+        boolean showDivider = typedArray.getBoolean(R.styleable.SimpleListItemView_sli_DividerVisible, true);
         findViewById(R.id.separatorView).setVisibility(showDivider ? VISIBLE : GONE);
 
         typedArray.recycle();

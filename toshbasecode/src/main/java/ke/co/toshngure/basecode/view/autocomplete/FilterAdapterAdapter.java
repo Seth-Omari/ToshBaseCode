@@ -10,13 +10,13 @@ package ke.co.toshngure.basecode.view.autocomplete;
 
 import android.content.Context;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -32,17 +32,22 @@ import ke.co.toshngure.basecode.log.BeeLog;
  * Created by Anthony Ngure on 6/24/15.
  * Email : anthonyngure25@gmail.com.
  */
-public class AutoCompleteAdapter extends BaseAdapter implements Filterable {
+public class FilterAdapterAdapter<T> extends BaseAdapter implements Filterable {
 
-    private static final String TAG = "AutoCompleteAdapter";
+    private static final String TAG = "FilterAdapterAdapter";
 
     private String mAutocompleteUrl;
     private Context mContext;
 
-    private List<String> resultList = new ArrayList<>();
-    private AutoCompleteView.Parser mParser;
+    private List<T> mResultList = new ArrayList<>();
+    private ArrayList<T> mAutocompleteSource = new ArrayList<>();
+    private AutoCompleteView.Parser<T> mParser;
+    private AutoCompleteView.Binder<T> mBinder;
+    private boolean isLocal;
+    private AutoCompleteView.Matcher<T> mMatcher;
 
-    AutoCompleteAdapter(Context context) {
+
+    FilterAdapterAdapter(Context context) {
         this.mContext = context;
     }
 
@@ -80,12 +85,13 @@ public class AutoCompleteAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public int getCount() {
-        return resultList.size();
+        return mResultList.size();
     }
 
     @Override
-    public String getItem(int position) {
-        return resultList.get(position);
+    public Object getItem(int position) {
+        Object item = mBinder.getItemTextValue(mResultList.get(position));
+        return item == null ? mResultList.get(position) : item;
     }
 
     @Override
@@ -94,12 +100,12 @@ public class AutoCompleteAdapter extends BaseAdapter implements Filterable {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
+            convertView = inflater.inflate(mBinder.getRowLayout(), parent, false);
         }
-        ((TextView) convertView.findViewById(android.R.id.text1)).setText(resultList.get(position));
+        mBinder.bind(convertView, mResultList.get(position));
         return convertView;
     }
 
@@ -110,7 +116,7 @@ public class AutoCompleteAdapter extends BaseAdapter implements Filterable {
             protected FilterResults performFiltering(CharSequence charSequence) {
                 FilterResults filterResults = new FilterResults();
                 if (charSequence != null) {
-                    List<String> suggestions = getResponse(charSequence.toString());
+                    List<T> suggestions = getResponse(charSequence.toString());
                     // Assign the data to the FilterResults
                     filterResults.values = suggestions;
                     filterResults.count = suggestions.size();
@@ -121,7 +127,7 @@ public class AutoCompleteAdapter extends BaseAdapter implements Filterable {
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults results) {
                 if (results != null && results.count > 0) {
-                    resultList = (List<String>) results.values;
+                    mResultList = (List<T>) results.values;
                     notifyDataSetChanged();
                 } else {
                     notifyDataSetInvalidated();
@@ -131,22 +137,49 @@ public class AutoCompleteAdapter extends BaseAdapter implements Filterable {
         return filter;
     }
 
-    private List<String> getResponse(final String query) {
-        String url = appendInput(query);
-        String response = connect(url);
-        List<String> displayList = mParser.parse(response);
-        return displayList;
+    private List<T> getResponse(final String query) {
+        if (TextUtils.isEmpty(query) || query.length() < FilterAdapterConfig.DEFAULT_THRESHOLD) {
+            return mAutocompleteSource;
+        }
+        if (isLocal) {
+            List<T> matches = new ArrayList<>();
+            for (T item : mResultList) {
+                if (mMatcher.matches(item, query)) {
+                    matches.add(item);
+                }
+            }
+            return matches;
+        } else {
+            String url = appendInput(query);
+            String response = connect(url);
+            return mParser.parse(response);
+        }
     }
 
     private String appendInput(String query) {
         return mAutocompleteUrl + Uri.encode(query);
     }
 
-    void setAutocompleteUrl(String autocompleteUrl) {
+    void setAutocompleteSource(String autocompleteUrl) {
         this.mAutocompleteUrl = autocompleteUrl;
     }
 
-    public void setParser(AutoCompleteView.Parser parser) {
+    void setAutocompleteSource(List<T> autocompleteSource, AutoCompleteView.Matcher<T> matcher) {
+        this.isLocal = true;
+        this.mMatcher = matcher;
+        this.mAutocompleteSource.addAll(autocompleteSource);
+        this.mResultList.addAll(autocompleteSource);
+    }
+
+    void setParser(AutoCompleteView.Parser<T> parser) {
         this.mParser = parser;
+    }
+
+    void setBinders(AutoCompleteView.Binder<T> binder) {
+        this.mBinder = binder;
+    }
+
+    public List<T> getResultList() {
+        return mResultList;
     }
 }

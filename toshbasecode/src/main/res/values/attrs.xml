@@ -51,6 +51,9 @@
 
     </declare-styleable>
 
+    <declare-styleable name="MaterialView">
+        <attr name="tint" format="color" />
+    </declare-styleable>
 
     <declare-styleable name="CropView">
         <!-- Viewport ratio used to compute height based off view width -->

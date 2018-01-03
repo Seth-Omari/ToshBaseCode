@@ -66,11 +66,6 @@ public class MainActivity extends BaseActivity {
         startActivity(new Intent(this, DrawableUtilsActivity.class));
     }
 
-    @OnClick(R.id.chipViewsSLIV)
-    public void onChipViewsSLIVSLIVClick() {
-        startActivity(new Intent(this, ChipsActivity.class));
-    }
-
     @OnClick(R.id.dialogSLIV)
     public void onDialogSLIVClick() {
         showProgressDialog();
@@ -81,5 +76,25 @@ public class MainActivity extends BaseActivity {
     public void onCustomMessageSLIVClick() {
         showProgressDialog(R.string.appbar_scrolling_view_behavior);
         new Handler().postDelayed(this::hideProgressDialog, 2000);
+    }
+
+    @OnClick(R.id.networkAutoCompleteViewSLIV)
+    public void onNetworkAutoCompleteViewSLIVClicked() {
+        AutoCompleteActivity.start(this, true);
+    }
+
+    @OnClick(R.id.localAutoCompleteViewSLIV)
+    public void onLocalAutoCompleteViewSLIVClicked() {
+        AutoCompleteActivity.start(this, false);
+    }
+
+    @OnClick(R.id.networkFilterableListViewSLIV)
+    public void networkFilterableListViewSLIVClick() {
+        FilterableListViewActivity.start(this, true);
+    }
+
+    @OnClick(R.id.localFilterableListViewSLIV)
+    public void localFilterableListViewSLIVClick() {
+        FilterableListViewActivity.start(this, false);
     }
 }

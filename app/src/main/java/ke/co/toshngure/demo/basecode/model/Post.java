@@ -15,27 +15,24 @@ package ke.co.toshngure.demo.basecode.model;
 
 public class Post {
 
-    private long Id;
-    private long UserId;
-    private String Title;
-    private String Body;
+    private int userId;
+    private int id;
+    private String title;
+    private String body;
 
-    public Post() {
+    public int getUserId() {
+        return userId;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public String getBody() {
-        return Body;
-    }
-
-    public long getId() {
-        return Id;
-    }
-
-    public long getUserId() {
-        return UserId;
+        return body;
     }
 }

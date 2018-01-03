@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -45,9 +45,9 @@ import ke.co.toshngure.basecode.utils.VectorUtils;
  * Created by Tosh on 7/11/16.
  */
 
-public class BaseTextView extends AppCompatTextView {
+public class MaterialTextView extends AppCompatTextView {
 
-    public static final String TAG = BaseTextView.class.getSimpleName();
+    public static final String TAG = MaterialTextView.class.getSimpleName();
     public static final Pattern MENTION_PATTERN = Pattern.compile("@([A-Za-z0-9_-]+)");
     public static final Pattern HASHTAG_PATTERN = Pattern.compile("#([A-Za-z0-9_-]+)");
     public static final Pattern WEB_PATTERN = Patterns.WEB_URL;
@@ -68,19 +68,19 @@ public class BaseTextView extends AppCompatTextView {
     @ColorRes
     private int mLinkColor;
 
-    public BaseTextView(Context context) {
+    public MaterialTextView(Context context) {
         this(context, null);
     }
 
-    public BaseTextView(Context context, AttributeSet attrs) {
+    public MaterialTextView(Context context, AttributeSet attrs) {
         this(context, attrs, android.R.attr.textViewStyle);
     }
 
-    public BaseTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MaterialTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        TypedArray superView = context.obtainStyledAttributes(attrs, R.styleable.FineView, defStyleAttr, 0);
-        mTint = superView.getColorStateList(R.styleable.FineView_tint);
+        TypedArray superView = context.obtainStyledAttributes(attrs, R.styleable.MaterialView, defStyleAttr, 0);
+        mTint = superView.getColorStateList(R.styleable.MaterialView_tint);
 
         superView.recycle();
 
@@ -396,10 +396,10 @@ public class BaseTextView extends AppCompatTextView {
 
     private static class UpdateTimeRunnable implements Runnable {
 
-        private final WeakReference<BaseTextView> weakRefRttv;
+        private final WeakReference<MaterialTextView> weakRefRttv;
         private long mRefTime;
 
-        UpdateTimeRunnable(BaseTextView rttv, long refTime) {
+        UpdateTimeRunnable(MaterialTextView rttv, long refTime) {
             this.mRefTime = refTime;
             weakRefRttv = new WeakReference<>(rttv);
         }
@@ -410,7 +410,7 @@ public class BaseTextView extends AppCompatTextView {
 
         @Override
         public void run() {
-            BaseTextView rttv = weakRefRttv.get();
+            MaterialTextView rttv = weakRefRttv.get();
             if (rttv == null) return;
             long difference = Math.abs(System.currentTimeMillis() - mRefTime);
             long interval = INITIAL_UPDATE_INTERVAL;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -15,26 +15,28 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.content.res.AppCompatResources;
-import android.support.v7.widget.SwitchCompat;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
 import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.utils.VectorUtils;
 
-public class FineSwitchCompat extends SwitchCompat {
+
+public class MaterialButton extends AppCompatButton {
     private ColorStateList mTint;
-    public FineSwitchCompat(Context context) {
-        super(context, null);
+
+    public MaterialButton(Context context) {
+        this(context, null);
     }
 
-    public FineSwitchCompat(Context context, AttributeSet attrs) {
-        this(context, attrs, android.support.v7.appcompat.R.attr.switchStyle);
+    public MaterialButton(Context context, AttributeSet attrs) {
+        this(context, attrs, android.support.v7.appcompat.R.attr.buttonStyle);
     }
 
-    public FineSwitchCompat(Context context, AttributeSet attrs, int defStyleAttr) {
+    public MaterialButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FineView, defStyleAttr, 0);
-        mTint = a.getColorStateList(R.styleable.FineView_tint);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MaterialView, defStyleAttr, 0);
+        mTint = a.getColorStateList(R.styleable.MaterialView_tint);
         a.recycle();
     }
 

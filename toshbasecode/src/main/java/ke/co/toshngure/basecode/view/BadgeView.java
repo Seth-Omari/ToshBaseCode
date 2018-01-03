@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -37,7 +37,7 @@ import android.widget.TextView;
  * @author Jeff Gilfelt
  */
 @SuppressLint("AppCompatCustomView")
-public class BaseBadgeView extends TextView {
+public class BadgeView extends TextView {
 
     public static final int POSITION_TOP_LEFT = 1;
     public static final int POSITION_TOP_RIGHT = 2;
@@ -69,11 +69,11 @@ public class BaseBadgeView extends TextView {
 
     private int targetTabIndex;
 
-    public BaseBadgeView(Context context) {
+    public BadgeView(Context context) {
         this(context, (AttributeSet) null, android.R.attr.textViewStyle);
     }
 
-    public BaseBadgeView(Context context, AttributeSet attrs) {
+    public BadgeView(Context context, AttributeSet attrs) {
         this(context, attrs, android.R.attr.textViewStyle);
     }
 
@@ -85,7 +85,7 @@ public class BaseBadgeView extends TextView {
      * @param context context for this view.
      * @param target the View to attach the badge to.
      */
-    public BaseBadgeView(Context context, View target) {
+    public BadgeView(Context context, View target) {
         this(context, null, android.R.attr.textViewStyle, target, 0);
     }
 
@@ -99,15 +99,15 @@ public class BaseBadgeView extends TextView {
      * @param target the TabWidget to attach the badge to.
      * @param index the position of the tab within the target.
      */
-    public BaseBadgeView(Context context, TabWidget target, int index) {
+    public BadgeView(Context context, TabWidget target, int index) {
         this(context, null, android.R.attr.textViewStyle, target, index);
     }
 
-    public BaseBadgeView(Context context, AttributeSet attrs, int defStyle) {
+    public BadgeView(Context context, AttributeSet attrs, int defStyle) {
         this(context, attrs, defStyle, null, 0);
     }
 
-    public BaseBadgeView(Context context, AttributeSet attrs, int defStyle, View target, int tabIndex) {
+    public BadgeView(Context context, AttributeSet attrs, int defStyle, View target, int tabIndex) {
         super(context, attrs, defStyle);
         init(context, target, tabIndex);
     }

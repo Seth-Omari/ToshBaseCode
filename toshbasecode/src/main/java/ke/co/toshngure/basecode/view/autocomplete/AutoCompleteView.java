@@ -12,6 +12,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -21,7 +25,7 @@ import java.util.List;
  * Created by Anthony Ngure on 6/24/15.
  * Email : anthonyngure25@gmail.com.
  */
-public class AutoCompleteView extends android.support.v7.widget.AppCompatAutoCompleteTextView {
+public class AutoCompleteView extends AppCompatAutoCompleteTextView {
     private static final int MESSAGE_TEXT_CHANGED = 100;
     private static final int DEFAULT_AUTOCOMPLETE_DELAY = 750;
     @SuppressLint("HandlerLeak")
@@ -31,60 +35,34 @@ public class AutoCompleteView extends android.support.v7.widget.AppCompatAutoCom
             AutoCompleteView.super.performFiltering((CharSequence) msg.obj, msg.arg1);
         }
     };
-    private int mAutoCompleteDelay = DEFAULT_AUTOCOMPLETE_DELAY;
-    private AutoCompleteAdapter mAdapter;
     private View mLoadingIndicator;
-    private SelectionListener mSelectionListener;
 
     public AutoCompleteView(Context context) {
         super(context);
-        setUpAdapter();
     }
 
     public AutoCompleteView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setUpAdapter();
     }
 
     public AutoCompleteView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setUpAdapter();
     }
 
-
-    public void setSelectionListener(SelectionListener selectionListener) {
-        this.mSelectionListener = selectionListener;
-        this.setOnItemClickListener((adapterView, view, position, id) ->
-                mSelectionListener.onItemSelected(mAdapter.getItem(position)));
-
+    public void setFilterAdapterConfig(FilterAdapterConfig filterAdapterConfig) {
+        this.setAdapter(filterAdapterConfig.build(this));
     }
 
-    public void setAutocompleteUrl(String mAutocompleteUrl) {
-        mAdapter.setAutocompleteUrl(mAutocompleteUrl);
-    }
-
-    public void setParser(Parser parser) {
-        mAdapter.setParser(parser);
-    }
 
     public void setLoadingIndicator(View loadingIndicator) {
         this.mLoadingIndicator = loadingIndicator;
-    }
-
-    public void setAutoCompleteDelay(int autoCompleteDelay) {
-        mAutoCompleteDelay = autoCompleteDelay;
-    }
-
-    private void setUpAdapter() {
-        mAdapter = new AutoCompleteAdapter(getContext());
-        setAdapter(mAdapter);
     }
 
     @Override
     protected void performFiltering(CharSequence text, int keyCode) {
         if (mLoadingIndicator != null) mLoadingIndicator.setVisibility(View.VISIBLE);
         mHandler.removeMessages(MESSAGE_TEXT_CHANGED);
-        mHandler.sendMessageDelayed(mHandler.obtainMessage(MESSAGE_TEXT_CHANGED, text), mAutoCompleteDelay);
+        mHandler.sendMessageDelayed(mHandler.obtainMessage(MESSAGE_TEXT_CHANGED, text), DEFAULT_AUTOCOMPLETE_DELAY);
     }
 
     @Override
@@ -93,11 +71,26 @@ public class AutoCompleteView extends android.support.v7.widget.AppCompatAutoCom
         super.onFilterComplete(count);
     }
 
-    public interface SelectionListener {
-        void onItemSelected(String string);
+    public interface SelectionListener<T> {
+        void onItemSelected(T item);
     }
 
-    public interface Parser {
-        List<String> parse(String response);
+    public interface Binder<T> {
+        void bind(View convertView, T item);
+
+        @LayoutRes
+        int getRowLayout();
+
+        @Nullable
+        String getItemTextValue(T item);
+    }
+
+    public interface Parser<T> {
+        @NonNull
+        List<T> parse(String response);
+    }
+
+    public interface Matcher<T> {
+        boolean matches(T item, String query);
     }
 }

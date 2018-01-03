@@ -34,4 +34,8 @@
     <string name="multiple_selectable">Multiple Selectable</string>
     <string name="horizontal">Horizontal</string>
     <string name="empty">Empty</string>
+    <string name="title_activity_auto_complete">AutoCompleteActivity</string>
+    <string name="user_local_source">User Local Source</string>
+    <string name="use_network_source">Use Network Source</string>
+    <string name="title_activity_filterable_list_view">Filterable ListView</string>
 </resources>
