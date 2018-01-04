@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -251,12 +251,12 @@ public class BaseUtils {
     }
 
     /**
-     * Get the color value for give attribute
+     * Get the color value for the given color attribute
      */
     @ColorInt
-    public static int getColorAttr(Context ctx, @AttrRes int colorAttrId) {
+    public static int getColor(Context context, @AttrRes int colorAttrId) {
         int[] attrs = new int[]{colorAttrId /* index 0 */};
-        TypedArray ta = ctx.obtainStyledAttributes(attrs);
+        TypedArray ta = context.obtainStyledAttributes(attrs);
         int colorFromTheme = ta.getColor(0, 0);
         ta.recycle();
         return colorFromTheme;

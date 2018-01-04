@@ -10,7 +10,6 @@ package ke.co.toshngure.basecode.images;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
@@ -90,7 +89,7 @@ public class NetworkImage extends FrameLayout {
         setImageDrawable(typedArray.getDrawable(R.styleable.NetworkImage_niSrc));
 
         /*Background*/
-        setBackground(typedArray.getDrawable(R.styleable.NetworkImage_niBackground));
+        mBackgroundImageView.setImageDrawable(typedArray.getDrawable(R.styleable.NetworkImage_niBackground));
 
         typedArray.recycle();
 
@@ -110,7 +109,7 @@ public class NetworkImage extends FrameLayout {
                 .dontAnimate()
                 .dontTransform()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .listener(new Listener(mImageView, mProgressBar, mErrorButton))
+                .listener(new Listener(mImageView, mProgressBar, mErrorButton, loadingCallBack))
                 .into(mImageView);
     }
 
@@ -121,7 +120,7 @@ public class NetworkImage extends FrameLayout {
                 .loadFromMediaStore(Uri.fromFile(file))
                 .dontAnimate()
                 .dontTransform()
-                .listener(new Listener(mImageView, mProgressBar, mErrorButton))
+                .listener(new Listener(mImageView, mProgressBar, mErrorButton, loadingCallBack))
                 .into(mImageView);
     }
 
@@ -132,7 +131,7 @@ public class NetworkImage extends FrameLayout {
                 .loadFromMediaStore(uri)
                 .dontAnimate()
                 .dontTransform()
-                .listener(new Listener(mImageView, mProgressBar, mErrorButton))
+                .listener(new Listener(mImageView, mProgressBar, mErrorButton, loadingCallBack))
                 .into(mImageView);
     }
 
@@ -153,27 +152,6 @@ public class NetworkImage extends FrameLayout {
         setImageDrawable(ContextCompat.getDrawable(getContext(), resId));
     }
 
-    @Override
-    public void setBackground(Drawable background) {
-        //super.setBackground(background);
-        mBackgroundImageView.setImageDrawable(background);
-    }
-
-    @Override
-    public void setBackgroundColor(int color) {
-        //super.setBackgroundColor(color);
-        if (mBackgroundImageView instanceof CircleImageView) {
-            mBackgroundImageView.setImageDrawable(new ColorDrawable(color));
-        } else {
-            mBackgroundImageView.setBackgroundColor(color);
-        }
-    }
-
-    @Override
-    public void setBackgroundResource(int resid) {
-        //super.setBackgroundResource(resid);
-        mBackgroundImageView.setImageResource(resid);
-    }
 
     public interface LoadingCallBack {
         void onSuccess(GlideDrawable drawable);
@@ -189,11 +167,13 @@ public class NetworkImage extends FrameLayout {
         final WeakReference<ImageView> imageViewWeakReference;
         final WeakReference<ProgressBar> progressBarWeakReference;
         final WeakReference<ImageView> errorImageViewWeakReference;
+        final WeakReference<LoadingCallBack> loadingCallBackWeakReference;
 
-        public Listener(ImageView imageView, ProgressBar progressBar, ImageView errorImageView) {
+        public Listener(ImageView imageView, ProgressBar progressBar, ImageView errorImageView, LoadingCallBack loadingCallBack) {
             imageViewWeakReference = new WeakReference<>(imageView);
             progressBarWeakReference = new WeakReference<>(progressBar);
             errorImageViewWeakReference = new WeakReference<>(errorImageView);
+            loadingCallBackWeakReference = new WeakReference<>(loadingCallBack);
         }
 
 
@@ -221,12 +201,9 @@ public class NetworkImage extends FrameLayout {
         @Override
         public boolean onResourceReady(GlideDrawable resource, Object model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
             final ImageView imageView = imageViewWeakReference.get();
-            if (imageView != null) {
-                if (imageView instanceof CircleImageView){
-                    imageView.setBackgroundResource(android.R.color.transparent);
-                } else {
-                    imageView.setBackgroundResource(android.R.color.white);
-                }
+            LoadingCallBack loadingCallBack = loadingCallBackWeakReference.get();
+            if (loadingCallBack != null) {
+                loadingCallBack.onSuccess(resource);
             }
             ProgressBar progressBar = progressBarWeakReference.get();
             if (progressBar != null) {

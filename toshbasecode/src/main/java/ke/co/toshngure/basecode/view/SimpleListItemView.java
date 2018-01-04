@@ -75,7 +75,7 @@ public class SimpleListItemView extends FrameLayout {
 
         setItemDrawable(typedArray.getDrawable(R.styleable.SimpleListItemView_sli_Drawable));
         int drawableTint = typedArray.getColor(R.styleable.SimpleListItemView_sli_DrawableTint,
-                BaseUtils.getColorAttr(getContext(), R.attr.colorPrimary));
+                BaseUtils.getColor(getContext(), R.attr.colorPrimary));
         mDrawableIV.setColorFilter(drawableTint);
 
         boolean drawableCentered = typedArray.getBoolean(R.styleable.SimpleListItemView_sli_DrawableCentered, false);

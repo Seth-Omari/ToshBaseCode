@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017.
+ * Copyright (c) 2018.
  *
  * Anthony Ngure
  *
@@ -89,13 +89,13 @@ public class BaseAppActivity extends AppCompatActivity {
     }
 
     protected void setUpStatusBarColor() {
-        StatusBarUtil.setColor(this, BaseUtils.getColorAttr(this, R.attr.colorPrimaryDark), 1);
+        StatusBarUtil.setColor(this, BaseUtils.getColor(this, R.attr.colorPrimaryDark), 1);
     }
 
     @Override
     public void startActivity(Intent intent) {
         super.startActivity(intent);
-        overridePendingTransition(R.anim.slide_left_in, R.anim.hold);
+        overridePendingTransition(getStartEnterAnim(), getStartExitAnim());
     }
 
 
@@ -126,16 +126,11 @@ public class BaseAppActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public void exitActivity() {
-        super.onBackPressed();
-        overridePendingTransition(R.anim.hold, R.anim.slide_right_out);
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                exitActivity();
+                onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -198,6 +193,25 @@ public class BaseAppActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.hold, R.anim.slide_right_out);
+        if (sessionDepth > 1) {
+            overridePendingTransition(getLeaveEnterAnim(), getLeaveExitAnim());
+        }
     }
+
+    protected int getStartEnterAnim() {
+        return R.anim.slide_left_in;
+    }
+
+    protected int getStartExitAnim() {
+        return R.anim.hold;
+    }
+
+    protected int getLeaveEnterAnim() {
+        return R.anim.hold;
+    }
+
+    protected int getLeaveExitAnim() {
+        return R.anim.slide_right_out;
+    }
+
 }

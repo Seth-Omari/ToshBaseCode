@@ -67,7 +67,7 @@ public class DashboardItemView extends FrameLayout {
         mIconIV.setColorFilter(iconTint);
 
         int iconBackground = typedArray.getColor(R.styleable.DashboardItemView_div_IconBackground,
-                BaseUtils.getColorAttr(getContext(), R.attr.colorPrimaryDark));
+                BaseUtils.getColor(getContext(), R.attr.colorPrimaryDark));
 
         int itemIconSize = typedArray.getDimensionPixelSize(R.styleable.DashboardItemView_div_IconSize, DEFAULT_ICON_SIZE);
 
