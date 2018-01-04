@@ -28,7 +28,6 @@
     <style name="BaseApp.Image">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:src">@drawable/met_ic_clear</item>
         <item name="android:scaleType">centerCrop</item>
         <item name="android:contentDescription">@string/app_name</item>
     </style>
