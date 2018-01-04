@@ -10,6 +10,7 @@ package ke.co.toshngure.basecode.images;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.annotation.DrawableRes;
@@ -46,6 +47,7 @@ public class NetworkImage extends FrameLayout {
     private static final String TAG = NetworkImage.class.getSimpleName();
 
     protected ImageView mImageView;
+    protected ImageView mBackgroundImageView;
     protected ImageView mErrorButton;
     protected ProgressBar mProgressBar;
     private LoadingCallBack loadingCallBack;
@@ -74,15 +76,22 @@ public class NetworkImage extends FrameLayout {
                 ViewGroup.LayoutParams.MATCH_PARENT);
         if (circled) {
             mImageView = new CircleImageView(context);
+            mBackgroundImageView = new CircleImageView(context);
         } else {
             mImageView = new ImageView(context);
+            mBackgroundImageView = new ImageView(context);
             mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            mBackgroundImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
+        imageFL.addView(mBackgroundImageView, layoutParams);
         imageFL.addView(mImageView, layoutParams);
 
         /*Image*/
-        Drawable drawable = typedArray.getDrawable(R.styleable.NetworkImage_niSrc);
-        setImageDrawable(drawable);
+        setImageDrawable(typedArray.getDrawable(R.styleable.NetworkImage_niSrc));
+
+        /*Background*/
+        setBackground(typedArray.getDrawable(R.styleable.NetworkImage_niBackground));
+
         typedArray.recycle();
 
     }
@@ -144,12 +153,31 @@ public class NetworkImage extends FrameLayout {
         setImageDrawable(ContextCompat.getDrawable(getContext(), resId));
     }
 
+    @Override
+    public void setBackground(Drawable background) {
+        //super.setBackground(background);
+        mBackgroundImageView.setImageDrawable(background);
+    }
 
+    @Override
+    public void setBackgroundColor(int color) {
+        //super.setBackgroundColor(color);
+        if (mBackgroundImageView instanceof CircleImageView) {
+            mBackgroundImageView.setImageDrawable(new ColorDrawable(color));
+        } else {
+            mBackgroundImageView.setBackgroundColor(color);
+        }
+    }
+
+    @Override
+    public void setBackgroundResource(int resid) {
+        //super.setBackgroundResource(resid);
+        mBackgroundImageView.setImageResource(resid);
+    }
 
     public interface LoadingCallBack {
         void onSuccess(GlideDrawable drawable);
     }
-
 
     /**
      * Glide Callback which clears the ImageView's background onSuccess. This is done to reduce

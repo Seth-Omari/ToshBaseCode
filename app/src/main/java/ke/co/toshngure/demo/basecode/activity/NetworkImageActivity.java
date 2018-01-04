@@ -64,8 +64,8 @@ public class NetworkImageActivity extends BaseActivity {
     @OnClick(R.id.drawableBtn)
     public void onDrawableBtnClicked() {
         sourceTV.setText("Drawable");
-        circledNI.setImageResource(R.drawable.ic_android_black_96dp);
-        normalNI.setImageResource(R.drawable.ic_android_black_96dp);
+        circledNI.setImageResource(R.drawable.header);
+        normalNI.setImageResource(R.drawable.header);
     }
 
     @OnClick(R.id.backgroundBtn)

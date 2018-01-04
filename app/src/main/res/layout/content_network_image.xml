@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/list_row_padding"
                 android:layout_weight="1"
-                android:background="@drawable/background_gray_circle"
+                app:niBackground="@color/colorPrimary"
                 app:niCircled="true"
                 app:niSrc="@drawable/header" />
 
@@ -39,6 +39,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/list_row_padding"
                 android:layout_weight="1"
+                app:niBackground="@color/colorAccent"
                 app:niCircled="false"
                 app:niSrc="@drawable/header" />
 
