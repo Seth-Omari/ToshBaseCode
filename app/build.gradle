@@ -12,7 +12,6 @@ apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "ke.co.toshngure.demo.basecode"
         minSdkVersion 14
@@ -50,7 +49,7 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation project(':toshbasecode')
+    implementation project(':basecode')
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     implementation 'com.jakewharton:butterknife:8.5.1'
     implementation 'com.github.jaychang0917:SimpleRecyclerView:1.2.3'

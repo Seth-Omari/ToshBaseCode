@@ -32,6 +32,7 @@ public class DrawableUtilsActivity extends BaseActivity {
     private int[] colors = new int[]{
             R.color.colorAccent,
             R.color.colorPrimary,
+            R.color.colorPrimaryDark,
             android.R.color.holo_red_dark,
             android.R.color.holo_blue_dark,
             android.R.color.holo_orange_dark,

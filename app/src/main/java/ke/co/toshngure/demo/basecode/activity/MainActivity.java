@@ -78,27 +78,6 @@ public class MainActivity extends BaseActivity {
         new Handler().postDelayed(this::hideProgressDialog, 2000);
     }
 
-    @OnClick(R.id.networkAutoCompleteViewSLIV)
-    public void onNetworkAutoCompleteViewSLIVClicked() {
-        AutoCompleteActivity.start(this, true);
-    }
-
-    @OnClick(R.id.localAutoCompleteViewSLIV)
-    public void onLocalAutoCompleteViewSLIVClicked() {
-        AutoCompleteActivity.start(this, false);
-    }
-
-    @OnClick(R.id.networkFilterableListViewSLIV)
-    public void onNetworkFilterableListViewSLIVClick() {
-        FilterableListViewActivity.start(this, true);
-    }
-
-    @OnClick(R.id.localFilterableListViewSLIV)
-    public void onLocalFilterableListViewSLIVClick() {
-        FilterableListViewActivity.start(this, false);
-    }
-
-
     @OnClick(R.id.networkImageSLIV)
     public void onNetworkImageSLIV() {
         NetworkImageActivity.start(this);

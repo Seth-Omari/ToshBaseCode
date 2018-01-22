@@ -14,7 +14,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="AVLoadingIndicatorColor">@android:color/black</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryText</item>
+        <item name="AVLoadingIndicatorColor">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -30,8 +32,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">?attr/selectableItemBackground</item>
-        <item name="sli_Drawable">@drawable/ic_android_black_24dp</item>
-        <item name="sli_SubTitle">@string/bottom_sheet_behavior</item>
+        <item name="sliDrawable">@drawable/ic_android_black_24dp</item>
+        <item name="sliSubTitle">@string/bottom_sheet_behavior</item>
     </style>
 
 </resources>

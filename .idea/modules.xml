@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Tosh.iml" filepath="$PROJECT_DIR$/Tosh.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/toshbasecode/toshbasecode.iml" filepath="$PROJECT_DIR$/toshbasecode/toshbasecode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/basecode/toshbasecode.iml" filepath="$PROJECT_DIR$/basecode/toshbasecode.iml" />
     </modules>
   </component>
 </project>
