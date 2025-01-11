@@ -13,7 +13,7 @@ group = 'com.github.anthonyngure'
 android {
     compileSdkVersion 26
     buildToolsVersion '26.0.2'
-    namespace 'ke.co.toshngure.demo.basecode'
+    namespace 'ke.co.toshngure.basecode'
 
     defaultConfig {
         minSdkVersion 14
@@ -54,7 +54,8 @@ dependencies {
     implementation 'com.loopj.android:android-async-http:1.4.9'
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.flaviofaria:kenburnsview:1.0.7'
-    //implementation 'com.jaeger.statusbarutil:library:1.4.0'
+    //implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    //implementation 'com.github.laobie:StatusBarUtil:-SNAPSHOT'
     //implementation 'com.google.android:flexbox:0.3.1'
     implementation('com.rengwuxian.materialedittext:library:2.1.4') {
         exclude group: 'com.android.support'

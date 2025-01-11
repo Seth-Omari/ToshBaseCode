@@ -19,9 +19,9 @@ import android.view.ViewGroup;
 import android.widget.Scroller;
 import android.widget.TextView;
 
-import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.ptr.indicator.PtrIndicator;
 import ke.co.toshngure.basecode.ptr.util.PtrCLog;
+import ke.co.toshngure.basecode.R;;
 
 /**
  * This layout view for "Pull to Refresh(Ptr)" support all of the view, you can contain everything you want.

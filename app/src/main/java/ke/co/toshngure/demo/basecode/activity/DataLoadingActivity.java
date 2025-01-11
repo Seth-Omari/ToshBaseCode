@@ -10,7 +10,7 @@ package ke.co.toshngure.demo.basecode.activity;
 
 import android.os.Bundle;
 
-import ke.co.toshngure.demo.basecode.R;
+import ke.co.toshngure.basecode.R;;
 import ke.co.toshngure.demo.basecode.fragment.UsersFragment;
 
 public class DataLoadingActivity extends BaseActivity {

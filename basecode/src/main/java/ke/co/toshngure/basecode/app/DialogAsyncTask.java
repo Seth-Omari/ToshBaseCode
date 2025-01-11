@@ -11,7 +11,8 @@ package ke.co.toshngure.basecode.app;
 import android.app.Activity;
 import android.os.AsyncTask;
 
-import ke.co.toshngure.basecode.R;
+import ke.co.toshngure.basecode.R;;
+
 
 /**
  * Created by Anthony Ngure on 03/09/2017.

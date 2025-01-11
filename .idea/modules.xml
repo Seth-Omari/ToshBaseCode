@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ToshBaseCode.iml" filepath="$PROJECT_DIR$/.idea/modules/ToshBaseCode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ToshBaseCode.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ToshBaseCode.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ToshBaseCode.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ToshBaseCode.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ToshBaseCode.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ToshBaseCode.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ToshBaseCode.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ToshBaseCode.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/basecode/ToshBaseCode.basecode.iml" filepath="$PROJECT_DIR$/.idea/modules/basecode/ToshBaseCode.basecode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/basecode/ToshBaseCode.basecode.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/basecode/ToshBaseCode.basecode.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/basecode/ToshBaseCode.basecode.main.iml" filepath="$PROJECT_DIR$/.idea/modules/basecode/ToshBaseCode.basecode.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/basecode/ToshBaseCode.basecode.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/basecode/ToshBaseCode.basecode.unitTest.iml" />
+    </modules>
+  </component>
+</project>

@@ -27,7 +27,7 @@ import butterknife.OnClick;
 import ke.co.toshngure.basecode.images.NetworkImage;
 import ke.co.toshngure.basecode.utils.BaseUtils;
 import ke.co.toshngure.basecode.utils.DrawableUtils;
-import ke.co.toshngure.demo.basecode.R;
+import ke.co.toshngure.basecode.R;;
 
 public class NetworkImageActivity extends BaseActivity {
 

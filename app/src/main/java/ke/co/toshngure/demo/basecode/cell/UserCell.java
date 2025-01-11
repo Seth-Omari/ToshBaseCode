@@ -21,7 +21,7 @@ import com.jaychang.srv.SimpleViewHolder;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ke.co.toshngure.basecode.images.NetworkImage;
-import ke.co.toshngure.demo.basecode.R;
+import ke.co.toshngure.basecode.R;;
 import ke.co.toshngure.demo.basecode.model.User;
 
 /**

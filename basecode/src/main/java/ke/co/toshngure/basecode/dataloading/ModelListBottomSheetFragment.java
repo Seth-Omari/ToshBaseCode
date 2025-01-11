@@ -44,13 +44,13 @@ import java.util.Collections;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
-import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.database.BaseLoader;
 import ke.co.toshngure.basecode.log.BeeLog;
 import ke.co.toshngure.basecode.ptr.PtrClassicFrameLayout;
 import ke.co.toshngure.basecode.ptr.PtrFrameLayout;
 import ke.co.toshngure.basecode.ptr.PtrHandler;
 import ke.co.toshngure.basecode.utils.BaseUtils;
+import ke.co.toshngure.basecode.R;;
 
 /**
  * Created by Anthony Ngure on 04/06/2017.

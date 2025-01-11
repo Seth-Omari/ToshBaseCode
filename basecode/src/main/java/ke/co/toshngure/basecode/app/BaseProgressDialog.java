@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import ke.co.toshngure.basecode.R;
+import ke.co.toshngure.basecode.R;;
 
 
 /**

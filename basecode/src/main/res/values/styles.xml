@@ -7,7 +7,13 @@
   -->
 
 <resources>
-
+    <style name="AVLoadingIndicatorView">
+        <item name="minWidth">48dip</item>
+        <item name="maxWidth">48dip</item>
+        <item name="minHeight">48dip</item>
+        <item name="maxHeight">48dip</item>
+        <item name="indicatorName">BallPulseIndicator</item>
+    </style>
     <!-- Base application theme. -->
     <style name="BaseAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -18,6 +24,8 @@
         <item name="android:textColorSecondary">@color/colorPrimaryText</item>
         <item name="AVLoadingIndicatorColor">@color/colorAccent</item>
     </style>
+
+
 
     <style name="BaseAppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

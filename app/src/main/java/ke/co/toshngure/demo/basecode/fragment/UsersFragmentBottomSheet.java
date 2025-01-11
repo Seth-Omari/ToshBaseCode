@@ -26,7 +26,7 @@ import ke.co.toshngure.basecode.dataloading.DataLoadingConfig;
 import ke.co.toshngure.basecode.dataloading.ModelCursor;
 import ke.co.toshngure.basecode.dataloading.ModelListBottomSheetFragment;
 import ke.co.toshngure.basecode.images.NetworkImage;
-import ke.co.toshngure.demo.basecode.R;
+import ke.co.toshngure.basecode.R;;
 import ke.co.toshngure.demo.basecode.cell.UserCell;
 import ke.co.toshngure.demo.basecode.model.User;
 import ke.co.toshngure.demo.basecode.network.Client;

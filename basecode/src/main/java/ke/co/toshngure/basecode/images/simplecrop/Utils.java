@@ -21,7 +21,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import ke.co.toshngure.basecode.BuildConfig;
 
 class Utils {
 
@@ -68,9 +67,9 @@ class Utils {
                     bitmap.compress(format, quality, outputStream);
                     outputStream.flush();
                 } catch (final Throwable throwable) {
-                    if (BuildConfig.DEBUG) {
+                    //if (BuildConfig.DEBUG) {
                         Log.e(TAG, "Error attempting to save bitmap.", throwable);
-                    }
+                    //}
                 } finally {
                     closeQuietly(outputStream);
                 }
@@ -91,9 +90,9 @@ class Utils {
                     bitmap.compress(format, quality, outputStream);
                     outputStream.flush();
                 } catch (final Throwable throwable) {
-                    if (BuildConfig.DEBUG) {
+                    //if (BuildConfig.DEBUG) {
                         Log.e(TAG, "Error attempting to save bitmap.", throwable);
-                    }
+                    //}
                 } finally {
                     if (closeWhenDone) {
                         closeQuietly(outputStream);

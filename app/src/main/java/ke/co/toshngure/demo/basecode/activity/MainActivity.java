@@ -16,7 +16,7 @@ import android.view.MenuItem;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import ke.co.toshngure.demo.basecode.R;
+import ke.co.toshngure.basecode.R;;
 import ke.co.toshngure.demo.basecode.fragment.UsersFragmentBottomSheet;
 
 public class MainActivity extends BaseActivity {

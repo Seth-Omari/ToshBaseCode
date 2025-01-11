@@ -22,12 +22,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
-
-import com.jaeger.library.StatusBarUtil;
-
-import ke.co.toshngure.basecode.R;
 import ke.co.toshngure.basecode.log.BeeLog;
 import ke.co.toshngure.basecode.utils.BaseUtils;
+import ke.co.toshngure.basecode.utils.StatusBarUtil;
+import ke.co.toshngure.basecode.R;;
 
 /**
  * Created by Anthony Ngure on 18/09/2017.

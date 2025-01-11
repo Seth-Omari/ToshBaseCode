@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) 2018.
-  ~
-  ~ Anthony Ngure
-  ~
-  ~ Email : anthonyngure25@gmail.com
-  -->
-
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- color for AVLoadingIndicatorView -->
-    <attr name="AVLoadingIndicatorColor" format="reference|color" />
+    <declare-styleable name="AVLoadingIndicatorView">
+        <attr name="minWidth" format="dimension" />
+        <attr name="maxWidth" format="dimension"/>
+        <attr name="minHeight" format="dimension" />
+        <attr name="maxHeight" format="dimension"/>
+        <attr name="indicatorName" format="string"/>
+        <attr name="indicatorColor" format="color"/>
+    </declare-styleable>
 
+    <attr name="colorPrimaryDark" format="color"/>
+    <attr name="colorPrimary" format="color"/>
+    <attr name="AVLoadingIndicatorColor" format="color"/>
 </resources>
